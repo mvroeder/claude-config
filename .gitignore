@@ -1,21 +1,19 @@
-# Sensitive — never sync
-credentials.json
-auth.json
-*.token
-.oauth*
+# === ALLES ignorieren ===
+*
 
-# Local state — machine-specific
-statsig/
-logs/
-*.log
-*.lock
+# === Nur diese Dateien/Ordner syncen ===
+!.gitignore
+!CLAUDE.md
+!settings.json
+!commands/
+!commands/**
+!skills/
+!skills/**
 
-# Session/cache data
-projects/
-todos/
-.last-*
-
-# Keep these (not ignored):
-# commands/        → custom slash commands & skills
-# settings.json    → preferences
-# CLAUDE.md        → global instructions
+# Innerhalb von Skills ignorieren
+**/__pycache__/
+**/*.pyc
+**/*.jpeg
+**/*.png
+**/*.mp3
+**/node_modules/
