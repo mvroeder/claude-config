@@ -1,0 +1,24 @@
+# Globale Präferenzen
+
+## Sprache
+- Kommunikation: Deutsch bevorzugt, Englisch okay
+- Code: Englisch (Variablen, Funktionen, Kommentare)
+- Commit Messages: Englisch
+
+## Arbeitsweise
+- Frag nach bevor du Annahmen triffst
+- Erkläre Entscheidungen kurz, nicht belehrend
+- Bei neuen Dependencies: immer begründen warum
+- Änderungen in kleinen, nachvollziehbaren Schritten
+- Jeden Schritt dokumentieren damit er reproduzierbar ist
+
+## Technische Präferenzen
+- Paketmanager: uv (nicht pip/poetry)
+- Python Versionen: via pyenv
+- Git: Feature Branches, aussagekräftige Commits
+- Secrets: .env Dateien, nie committen
+
+## Kontext
+- macOS (Apple Silicon), mehrere Maschinen (Mac Mini + MacBook)
+- Projekte müssen maschinenübergreifend reproduzierbar sein
+- GitHub für Repos (Username: mvroeder)

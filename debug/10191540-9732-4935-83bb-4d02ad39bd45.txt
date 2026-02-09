@@ -1,0 +1,851 @@
+2026-02-09T10:43:00.046Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-09T10:43:00.046Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-09T10:43:00.046Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-09T10:43:00.046Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-09T10:43:00.052Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-09T10:43:00.054Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-09T10:43:00.054Z [DEBUG] [STARTUP] Running setup()...
+2026-02-09T10:43:00.054Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-09T10:43:00.056Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/mvroeder/.claude/skills, project=[]
+2026-02-09T10:43:00.057Z [DEBUG] Error log sink initialized
+2026-02-09T10:43:00.058Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-09T10:43:00.058Z [DEBUG] Total plugin skills loaded: 0
+2026-02-09T10:43:00.058Z [DEBUG] Total plugin commands loaded: 0
+2026-02-09T10:43:00.059Z [DEBUG] [STARTUP] setup() completed in 5ms
+2026-02-09T10:43:00.059Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-09T10:43:00.068Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-09T10:43:00.068Z [DEBUG] Total plugin agents loaded: 0
+2026-02-09T10:43:00.069Z [DEBUG] Loaded 1 unique skills (managed: 0, user: 1, project: 0, additional: 0, legacy commands: 0)
+2026-02-09T10:43:00.070Z [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-09T10:43:00.070Z [DEBUG] [STARTUP] Commands and agents loaded in 11ms
+2026-02-09T10:43:00.070Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-09T10:43:00.070Z [DEBUG] [render] initLayout starting
+2026-02-09T10:43:00.070Z [DEBUG] Layout engine: yoga
+2026-02-09T10:43:00.073Z [DEBUG] [Claude in Chrome] Found chrome profiles: Default
+2026-02-09T10:43:00.075Z [DEBUG] [render] initLayout complete
+2026-02-09T10:43:00.078Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:43:00.080Z [DEBUG] [render] first ink render: 349ms since process start
+2026-02-09T10:43:00.081Z [DEBUG] [keybindings] Watching for changes to /Users/mvroeder/.claude/keybindings.json
+2026-02-09T10:43:00.100Z [DEBUG] [Claude in Chrome] Found edge profiles: Default
+2026-02-09T10:43:00.111Z [DEBUG] Grove: Using fresh cached config
+2026-02-09T10:43:00.115Z [DEBUG] [render] initLayout starting
+2026-02-09T10:43:00.116Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-09T10:43:00.116Z [DEBUG] [render] initLayout complete
+2026-02-09T10:43:00.117Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:43:00.123Z [DEBUG] [render] first ink render: 392ms since process start
+2026-02-09T10:43:00.124Z [DEBUG] Git remote URL: git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:43:00.125Z [DEBUG] Parsed repository: mvroeder/hyperliquid-trading-agent from git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:43:00.125Z [DEBUG] Parsed repository: mvroeder/hyperliquid-trading-agent from URL: git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:43:00.125Z [DEBUG] Path /Users/mvroeder/dev/experiments/hyperliquid already tracked for repo mvroeder/hyperliquid-trading-agent
+2026-02-09T10:43:00.126Z [DEBUG] [Claude in Chrome] Extension not found in any browser
+2026-02-09T10:43:00.499Z [DEBUG] [STARTUP] showSetupScreens() completed in 429ms
+2026-02-09T10:43:00.499Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-09T10:43:00.499Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-09T10:43:00.499Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-09T10:43:00.500Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:00.500Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:00.502Z [DEBUG] Total LSP servers loaded: 0
+2026-02-09T10:43:00.504Z [DEBUG] [STARTUP] MCP configs loaded in 452ms
+2026-02-09T10:43:00.504Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-09T10:43:00.504Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-09T10:43:00.504Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:00.506Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-09T10:43:00.506Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:00.506Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-09T10:43:00.506Z [DEBUG] LSP server manager initialized successfully
+2026-02-09T10:43:00.506Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-09T10:43:00.512Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-09T10:43:00.514Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633780514
+2026-02-09T10:43:00.515Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:00.515Z [DEBUG] Temp file written successfully, size: 8335 bytes
+2026-02-09T10:43:00.515Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:00.515Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633780514 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:00.515Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:00.516Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-02-09T10:43:00.516Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-09T10:43:00.516Z [DEBUG] [render] initLayout starting
+2026-02-09T10:43:00.519Z [DEBUG] [render] initLayout complete
+2026-02-09T10:43:00.525Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:43:00.547Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633780547
+2026-02-09T10:43:00.547Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:00.547Z [DEBUG] Temp file written successfully, size: 8335 bytes
+2026-02-09T10:43:00.547Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:00.547Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633780547 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:00.547Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:00.548Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633780548
+2026-02-09T10:43:00.548Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:00.548Z [DEBUG] Temp file written successfully, size: 8335 bytes
+2026-02-09T10:43:00.548Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:00.548Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633780548 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:00.548Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:00.549Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:43:00.549Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-09T10:43:00.550Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:43:00.550Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-09T10:43:00.550Z [DEBUG] performStartupChecks called
+2026-02-09T10:43:00.550Z [DEBUG] Trust not accepted for current directory - skipping plugin installations
+2026-02-09T10:43:00.551Z [DEBUG] FileHistory: Added snapshot for c3e80655-8adc-4285-a549-50db3b6d8953, tracking 0 files
+2026-02-09T10:43:00.574Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude/todos/10191540-9732-4935-83bb-4d02ad39bd45-agent-10191540-9732-4935-83bb-4d02ad39bd45.json.tmp.59772.1770633780574
+2026-02-09T10:43:00.574Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-09T10:43:00.574Z [DEBUG] Renaming /Users/mvroeder/.claude/todos/10191540-9732-4935-83bb-4d02ad39bd45-agent-10191540-9732-4935-83bb-4d02ad39bd45.json.tmp.59772.1770633780574 to /Users/mvroeder/.claude/todos/10191540-9732-4935-83bb-4d02ad39bd45-agent-10191540-9732-4935-83bb-4d02ad39bd45.json
+2026-02-09T10:43:00.574Z [DEBUG] File /Users/mvroeder/.claude/todos/10191540-9732-4935-83bb-4d02ad39bd45-agent-10191540-9732-4935-83bb-4d02ad39bd45.json written atomically
+2026-02-09T10:43:00.574Z [DEBUG] [render] first ink render: 844ms since process start
+2026-02-09T10:43:00.575Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:43:00.924Z [DEBUG] Watching for changes in setting files /Users/mvroeder/.claude/settings.json...
+2026-02-09T10:43:00.926Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:43:00.926Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-09T10:43:00.926Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-09T10:43:00.933Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-09T10:43:00.934Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:43:00.934Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:43:00.936Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:43:00.936Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:43:00.937Z [DEBUG] Sending 2 skills via attachment (initial, 2 total sent)
+2026-02-09T10:43:00.940Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:43:00.940Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:00.940Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:00.940Z [DEBUG] FileHistory: Making snapshot for message 12a6478d-0611-4b29-b64b-609732c429d3
+2026-02-09T10:43:00.941Z [DEBUG] FileHistory: Added snapshot for 12a6478d-0611-4b29-b64b-609732c429d3, tracking 0 files
+2026-02-09T10:43:00.944Z [DEBUG] Org penguin mode: disabled (extra_usage_disabled)
+2026-02-09T10:43:00.945Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633780945
+2026-02-09T10:43:00.945Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:00.945Z [DEBUG] Temp file written successfully, size: 8335 bytes
+2026-02-09T10:43:00.945Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:00.945Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633780945 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:00.946Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:00.946Z [DEBUG] Watching for changes in skill/command directories: /Users/mvroeder/.claude/skills...
+2026-02-09T10:43:00.946Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-02-09T10:43:00.946Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-02-09T10:43:00.963Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-09T10:43:00.965Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:00.972Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:43:00.972Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:43:00.973Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:43:00.974Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:43:00.976Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.57b; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:00.976Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:00.976Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:00.977Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:00.977Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:00.978Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:00.978Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-09T10:43:00.988Z [DEBUG] autocompact: tokens=124 threshold=167000 effectiveWindow=180000
+2026-02-09T10:43:00.988Z [DEBUG] Auto tool search disabled: 0 tokens (threshold: 20000, 10% of context) [source: query]
+2026-02-09T10:43:00.992Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:00.993Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:00.993Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:00.993Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:00.994Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:00.994Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:00.996Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-09T10:43:01.010Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:01.022Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:43:01.022Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.981; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:01.022Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:01.022Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:01.022Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:01.023Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:01.023Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:01.120Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:43:01.134Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-09T10:43:01.134Z [DEBUG] MCP server "claude.ai Canva": Initializing claude.ai proxy transport for server mcpsrv_01XfycMruheCFE6yrnb7drkk
+2026-02-09T10:43:01.134Z [DEBUG] MCP server "claude.ai Canva": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01XfycMruheCFE6yrnb7drkk
+2026-02-09T10:43:01.135Z [DEBUG] MCP server "claude.ai Canva": claude.ai proxy transport created successfully
+2026-02-09T10:43:01.136Z [DEBUG] MCP server "claude.ai Canva": Starting connection with timeout of 30000ms
+2026-02-09T10:43:01.136Z [DEBUG] MCP server "claude.ai Gamma": Initializing claude.ai proxy transport for server mcpsrv_01VFwQf5SJ8ZuYpDkS4k5Xdu
+2026-02-09T10:43:01.136Z [DEBUG] MCP server "claude.ai Gamma": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01VFwQf5SJ8ZuYpDkS4k5Xdu
+2026-02-09T10:43:01.136Z [DEBUG] MCP server "claude.ai Gamma": claude.ai proxy transport created successfully
+2026-02-09T10:43:01.137Z [DEBUG] MCP server "claude.ai Gamma": Starting connection with timeout of 30000ms
+2026-02-09T10:43:01.199Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/Caskroom/claude-code/2.1.37/claude)
+2026-02-09T10:43:01.387Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-09T10:43:01.387Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-09T10:43:01.449Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:43:01.450Z [DEBUG] [useDeferredValue] Messages deferred by 1 (2→3)
+2026-02-09T10:43:01.455Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:01.469Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:01.469Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:01.469Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:01.521Z [DEBUG] MCP server "claude.ai Canva": claude.ai proxy connection failed after 387ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxMdrSEjJwfNQxdTMEKU"}
+2026-02-09T10:43:01.521Z [ERROR] MCP server "claude.ai Canva" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxMdrSEjJwfNQxdTMEKU"}
+2026-02-09T10:43:01.521Z [DEBUG] MCP server "claude.ai Canva": Authentication required for claude.ai proxy server
+2026-02-09T10:43:01.540Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:01.727Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:01.875Z [DEBUG] MCP server "claude.ai Gamma": Successfully connected to claudeai-proxy server in 739ms
+2026-02-09T10:43:01.875Z [DEBUG] MCP server "claude.ai Gamma": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"gamma-mcp","version":"1.0.0"}}
+2026-02-09T10:43:01.968Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:02.065Z [ERROR] API error (attempt 2/11): undefined Connection error.
+2026-02-09T10:43:02.066Z [DEBUG] [useDeferredValue] Messages deferred by 1 (3→4)
+2026-02-09T10:43:02.073Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:02.189Z [DEBUG] MCP server "claude.ai Gamma": CLAUDEAI-PROXY connection dropped after 0s uptime
+2026-02-09T10:43:02.189Z [DEBUG] MCP server "claude.ai Gamma": Connection error: Streamable HTTP error: Failed to open SSE stream: Not Found
+2026-02-09T10:43:02.189Z [DEBUG] MCP server "claude.ai Gamma": CLAUDEAI-PROXY connection dropped after 0s uptime
+2026-02-09T10:43:02.189Z [DEBUG] MCP server "claude.ai Gamma": Connection error: Streamable HTTP error: Failed to open SSE stream: Not Found
+2026-02-09T10:43:02.267Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:02.338Z [ERROR] Error: Error: Connection error.
+    at makeRequest (/$bunfs/root/claude:336:4548)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:43:02.338Z [DEBUG] countTokensWithFallback: API returned null, trying haiku fallback (21 tools)
+2026-02-09T10:43:02.338Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:02.338Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:02.338Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:02.608Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:03.311Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:03.315Z [DEBUG] countTokensWithFallback: haiku fallback failed: Connection error.
+2026-02-09T10:43:03.315Z [ERROR] Error: Error: Connection error.
+    at makeRequest (/$bunfs/root/claude:336:4548)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:43:03.315Z [DEBUG] countToolDefinitionTokens returned null for 21 tools: Task, TaskOutput, Bash, Glob, Grep, ExitPlanMode, Read, Edit, Write, NotebookEdit, WebFetch, WebSear...
+2026-02-09T10:43:05.397Z [ERROR] Error: Error: 1P event logging: 76 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:43:05.398Z [ERROR] Error: Error: {"message":"Failed to export 76 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 76 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:43:06.221Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:06.231Z [DEBUG] [useDeferredValue] Messages deferred by 1 (4→5)
+2026-02-09T10:43:06.234Z [DEBUG] [useDeferredValue] Messages deferred by 1 (4→5)
+2026-02-09T10:43:06.237Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:07.713Z [DEBUG] [useDeferredValue] Messages deferred by 1 (5→6)
+2026-02-09T10:43:07.719Z [DEBUG] [useDeferredValue] Messages deferred by 1 (5→6)
+2026-02-09T10:43:07.722Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.802Z [DEBUG] [useDeferredValue] Messages deferred by 1 (6→7)
+2026-02-09T10:43:09.809Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.825Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-09T10:43:09.825Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:09.825Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:09.825Z [DEBUG] autocompact: tokens=20599 threshold=167000 effectiveWindow=180000
+2026-02-09T10:43:09.825Z [DEBUG] Auto tool search disabled: 0 tokens (threshold: 20000, 10% of context) [source: query]
+2026-02-09T10:43:09.827Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:09.828Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:09.828Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:09.828Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:09.828Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.828Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.829Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.830Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633789830
+2026-02-09T10:43:09.830Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:09.831Z [DEBUG] Temp file written successfully, size: 8336 bytes
+2026-02-09T10:43:09.831Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:09.831Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633789830 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:09.831Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:09.834Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:09.837Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:43:11.861Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:12.106Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-09T10:43:12.110Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-09T10:43:12.110Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:12.110Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:12.110Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=12 cacheRead=20143 cacheCreate=471
+2026-02-09T10:43:12.111Z [DEBUG] [Speculation] enabled=false
+2026-02-09T10:43:27.652Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:43:27.652Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:43:27.652Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:43:27.652Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:43:27.654Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:43:27.654Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:27.654Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:27.654Z [DEBUG] FileHistory: Making snapshot for message 3a615557-65c7-4e37-b62b-5d3cc8e21331
+2026-02-09T10:43:27.654Z [DEBUG] FileHistory: Added snapshot for 3a615557-65c7-4e37-b62b-5d3cc8e21331, tracking 0 files
+2026-02-09T10:43:27.655Z [DEBUG] [useDeferredValue] Messages deferred by 1 (7→8)
+2026-02-09T10:43:27.660Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:27.669Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:43:27.669Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:43:27.669Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:43:27.670Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.bf5; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:27.670Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:27.670Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:27.670Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:27.670Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:27.670Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:27.671Z [DEBUG] autocompact: tokens=20334 threshold=167000 effectiveWindow=180000
+2026-02-09T10:43:27.672Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:27.672Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:27.672Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:27.674Z [DEBUG] [useDeferredValue] Messages deferred by 1 (7→8)
+2026-02-09T10:43:27.683Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:28.013Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:43:28.017Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:28.019Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:28.019Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:28.019Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:28.019Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:28.019Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:28.548Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:30.288Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:30.289Z [DEBUG] [useDeferredValue] Messages deferred by 1 (8→9)
+2026-02-09T10:43:30.296Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:31.101Z [DEBUG] [useDeferredValue] Messages deferred by 1 (9→10)
+2026-02-09T10:43:31.104Z [DEBUG] [useDeferredValue] Messages deferred by 1 (9→10)
+2026-02-09T10:43:31.108Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:32.576Z [DEBUG] [useDeferredValue] Messages deferred by 1 (10→11)
+2026-02-09T10:43:32.587Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:32.661Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-09T10:43:32.661Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:32.661Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:32.661Z [DEBUG] autocompact: tokens=24053 threshold=167000 effectiveWindow=180000
+2026-02-09T10:43:32.661Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:43:32.663Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:32.663Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:32.663Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:32.663Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:32.664Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:32.664Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:32.667Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:32.669Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:43:35.103Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:43:35.103Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-09T10:43:35.105Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-09T10:43:35.105Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:35.105Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:35.106Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=5 cacheRead=23663 cacheCreate=405
+2026-02-09T10:43:35.106Z [DEBUG] [Speculation] enabled=false
+2026-02-09T10:43:38.492Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:45.242Z [DEBUG] Telemetry flushed successfully
+2026-02-09T10:43:45.283Z [ERROR] Error: Error: Failed to delete keychain entry
+    at Bc9 (/$bunfs/root/claude:177:10875)
+    at async Xc9 (/$bunfs/root/claude:178:592)
+    at async Qc9 (/$bunfs/root/claude:178:496)
+    at async LLR (/$bunfs/root/claude:1915:2222)
+    at async startOAuthFlow (/$bunfs/root/claude:1915:3568)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:43:45.285Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633825285
+2026-02-09T10:43:45.285Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:45.285Z [DEBUG] Temp file written successfully, size: 8336 bytes
+2026-02-09T10:43:45.285Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:45.285Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633825285 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:45.285Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:45.360Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633825360
+2026-02-09T10:43:45.360Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:45.360Z [DEBUG] Temp file written successfully, size: 7918 bytes
+2026-02-09T10:43:45.360Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:45.360Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633825360 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:45.360Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:45.613Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633825613
+2026-02-09T10:43:45.613Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:45.614Z [DEBUG] Temp file written successfully, size: 8281 bytes
+2026-02-09T10:43:45.614Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:45.614Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633825613 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:45.614Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:45.873Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633825873
+2026-02-09T10:43:45.873Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:45.873Z [DEBUG] Temp file written successfully, size: 8409 bytes
+2026-02-09T10:43:45.874Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:45.874Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633825873 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:45.874Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:45.877Z [DEBUG] Getting matching hook commands for Notification with query: auth_success
+2026-02-09T10:43:45.877Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:45.877Z [DEBUG] Matched 0 unique hooks for query "auth_success" (0 before deduplication)
+2026-02-09T10:43:52.293Z [DEBUG] Programmatic settings change notification for policySettings
+2026-02-09T10:43:52.293Z [DEBUG] Plugin hooks: reloading due to policySettings change
+2026-02-09T10:43:52.297Z [DEBUG] Settings changed from policySettings, updating app state
+2026-02-09T10:43:52.303Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633832303
+2026-02-09T10:43:52.303Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:52.303Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:43:52.303Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:52.303Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633832303 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:52.304Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:52.305Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-09T10:43:52.305Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-09T10:43:52.305Z [DEBUG] FileHistory: Making snapshot for message 466fb292-efbe-4c8b-8942-e686002d47a2
+2026-02-09T10:43:52.305Z [DEBUG] FileHistory: Added snapshot for 466fb292-efbe-4c8b-8942-e686002d47a2, tracking 0 files
+2026-02-09T10:43:52.307Z [DEBUG] [useDeferredValue] Messages deferred by 3 (11→14)
+2026-02-09T10:43:52.311Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:52.319Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:43:52.320Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:43:52.321Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:43:52.322Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:43:52.322Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-09T10:43:52.322Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-09T10:43:52.325Z [DEBUG] [useDeferredValue] Messages deferred by 3 (11→14)
+2026-02-09T10:43:52.328Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:52.335Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:43:52.338Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:52.600Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-09T10:43:52.608Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:57.386Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633837386
+2026-02-09T10:43:57.386Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:43:57.386Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:43:57.386Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:43:57.386Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633837386 to /Users/mvroeder/.claude.json
+2026-02-09T10:43:57.387Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:43:57.388Z [DEBUG] Metadata string for last30days:
+2026-02-09T10:43:57.388Z [DEBUG] <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+2026-02-09T10:43:57.388Z [DEBUG] command-message tags in metadata: 1
+2026-02-09T10:43:57.393Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:43:57.393Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:43:57.393Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:43:57.393Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:43:57.393Z [DEBUG] processPromptSlashCommand creating 3 messages for last30days
+2026-02-09T10:43:57.393Z [DEBUG] Message 1: <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+2026-02-09T10:43:57.393Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: /Users/mvroeder/.claude/skills/research-last30days\n\n# last30days: Research Any Topic from the Last 30 Days\n\nResearch ANY topic across Reddit,
+2026-02-09T10:43:57.393Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-09T10:43:57.394Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:43:57.394Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:43:57.394Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:43:57.394Z [DEBUG] FileHistory: Making snapshot for message 4c94d465-b4db-4508-bd39-9a17bfe63f84
+2026-02-09T10:43:57.394Z [DEBUG] FileHistory: Added snapshot for 4c94d465-b4db-4508-bd39-9a17bfe63f84, tracking 0 files
+2026-02-09T10:43:57.395Z [DEBUG] [useDeferredValue] Messages deferred by 3 (14→17)
+2026-02-09T10:43:57.398Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:57.403Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:43:57.404Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:43:57.405Z [DEBUG] [useDeferredValue] Messages deferred by 3 (14→17)
+2026-02-09T10:43:57.406Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:43:57.406Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:43:57.407Z [DEBUG] autocompact: tokens=28040 threshold=167000 effectiveWindow=180000
+2026-02-09T10:43:57.407Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:43:57.410Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:43:57.411Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:43:57.411Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:43:57.411Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:57.411Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:43:57.411Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:57.419Z [DEBUG] [useDeferredValue] Messages deferred by 3 (14→17)
+2026-02-09T10:43:57.424Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:57.579Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:43:57.580Z [DEBUG] [useDeferredValue] Messages deferred by 1 (17→18)
+2026-02-09T10:43:57.585Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:43:58.177Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:00.244Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:44:01.091Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:44:01.092Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:44:01.473Z [DEBUG] [onCancel] focusedInputDialog=undefined streamMode=responding
+2026-02-09T10:44:01.475Z [ERROR] Stream completed with message_start but no content blocks completed - triggering non-streaming fallback
+2026-02-09T10:44:01.476Z [ERROR] Error streaming, falling back to non-streaming mode: Stream ended without receiving any events
+2026-02-09T10:44:01.476Z [ERROR] Error in API request: Request was aborted.
+2026-02-09T10:44:01.477Z [ERROR] Error: Error: Request was aborted.
+    at j6R (/$bunfs/root/claude:841:99151)
+    at next (native:1:11)
+    at gaB (/$bunfs/root/claude:5683:4399)
+    at next (native:1:11)
+    at maB (/$bunfs/root/claude:5688:7547)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:01.478Z [DEBUG] [useDeferredValue] Messages deferred by 1 (18→19)
+2026-02-09T10:44:01.481Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:01.485Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:44:01.490Z [DEBUG] [useDeferredValue] Messages deferred by 1 (18→19)
+2026-02-09T10:44:01.492Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:01.514Z [DEBUG] High write ratio: blit=0, write=1019 (100.0% writes), screen=34x154
+2026-02-09T10:44:02.762Z [ERROR] Error: Error: 1P event logging: 21 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:02.763Z [ERROR] Error: Error: {"message":"Failed to export 21 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 21 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:07.570Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:44:07.575Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:44:20.671Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770633860671
+2026-02-09T10:44:20.671Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:44:20.672Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:44:20.672Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:44:20.672Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770633860671 to /Users/mvroeder/.claude.json
+2026-02-09T10:44:20.672Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:44:20.674Z [DEBUG] Metadata string for last30days:
+2026-02-09T10:44:20.674Z [DEBUG] <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+<command-args>claude skills structure directory best practice</command-args>
+2026-02-09T10:44:20.674Z [DEBUG] command-message tags in metadata: 1
+2026-02-09T10:44:20.677Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:44:20.677Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:44:20.677Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:44:20.677Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:44:20.678Z [DEBUG] processPromptSlashCommand creating 3 messages for last30days
+2026-02-09T10:44:20.678Z [DEBUG] Message 1: <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+<command-args>claude skills structure directory best practice</command-args>
+2026-02-09T10:44:20.678Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: /Users/mvroeder/.claude/skills/research-last30days\n\n# last30days: Research Any Topic from the Last 30 Days\n\nResearch ANY topic across Reddit,
+2026-02-09T10:44:20.678Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-09T10:44:20.678Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:44:20.678Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:44:20.678Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:44:20.678Z [DEBUG] FileHistory: Making snapshot for message 0af49bb8-498b-4eb4-bde6-c2501e911a48
+2026-02-09T10:44:20.678Z [DEBUG] FileHistory: Added snapshot for 0af49bb8-498b-4eb4-bde6-c2501e911a48, tracking 0 files
+2026-02-09T10:44:20.680Z [DEBUG] [useDeferredValue] Messages deferred by 3 (19→22)
+2026-02-09T10:44:20.683Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:20.688Z [DEBUG] High write ratio: blit=0, write=1032 (100.0% writes), screen=36x154
+2026-02-09T10:44:20.691Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:44:20.691Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:44:20.692Z [DEBUG] autocompact: tokens=32230 threshold=167000 effectiveWindow=180000
+2026-02-09T10:44:20.692Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:44:20.694Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:44:20.695Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:44:20.695Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:44:20.695Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:20.695Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:44:20.695Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:20.697Z [DEBUG] [useDeferredValue] Messages deferred by 3 (19→22)
+2026-02-09T10:44:20.706Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:20.726Z [DEBUG] High write ratio: blit=0, write=1094 (100.0% writes), screen=38x154
+2026-02-09T10:44:21.501Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:44:21.502Z [DEBUG] [useDeferredValue] Messages deferred by 1 (22→23)
+2026-02-09T10:44:21.513Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:21.537Z [DEBUG] High write ratio: blit=0, write=1094 (100.0% writes), screen=38x154
+2026-02-09T10:44:22.056Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:22.318Z [ERROR] API error (attempt 2/11): undefined Connection error.
+2026-02-09T10:44:22.319Z [DEBUG] [useDeferredValue] Messages deferred by 1 (23→24)
+2026-02-09T10:44:22.330Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:22.359Z [DEBUG] High write ratio: blit=0, write=1094 (100.0% writes), screen=38x154
+2026-02-09T10:44:23.557Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:23.938Z [ERROR] API error (attempt 3/11): undefined Connection error.
+2026-02-09T10:44:23.939Z [DEBUG] [useDeferredValue] Messages deferred by 1 (24→25)
+2026-02-09T10:44:23.945Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:23.967Z [DEBUG] High write ratio: blit=0, write=1094 (100.0% writes), screen=38x154
+2026-02-09T10:44:26.055Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:26.075Z [ERROR] Error: Error: 1P event logging: 20 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:26.075Z [ERROR] Error: Error: {"message":"Failed to export 20 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 20 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:26.217Z [ERROR] API error (attempt 4/11): undefined Connection error.
+2026-02-09T10:44:26.218Z [DEBUG] [useDeferredValue] Messages deferred by 1 (25→26)
+2026-02-09T10:44:26.224Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:26.252Z [DEBUG] High write ratio: blit=0, write=1173 (100.0% writes), screen=40x154
+2026-02-09T10:44:30.448Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:30.562Z [ERROR] API error (attempt 5/11): undefined Connection error.
+2026-02-09T10:44:30.563Z [DEBUG] [useDeferredValue] Messages deferred by 1 (26→27)
+2026-02-09T10:44:30.571Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:30.602Z [DEBUG] High write ratio: blit=0, write=1174 (100.0% writes), screen=40x154
+2026-02-09T10:44:31.904Z [ERROR] Error: Error: 1P event logging: 4 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:31.904Z [ERROR] Error: Error: {"message":"Failed to export 4 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 4 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:44:40.544Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:41.245Z [ERROR] API error (attempt 6/11): undefined Connection error.
+2026-02-09T10:44:41.247Z [DEBUG] [useDeferredValue] Messages deferred by 1 (27→28)
+2026-02-09T10:44:41.267Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:41.294Z [DEBUG] High write ratio: blit=0, write=1174 (100.0% writes), screen=40x154
+2026-02-09T10:44:58.509Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:58.908Z [ERROR] API error (attempt 7/11): undefined Connection error.
+2026-02-09T10:44:58.911Z [DEBUG] [useDeferredValue] Messages deferred by 1 (28→29)
+2026-02-09T10:44:58.926Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:44:58.960Z [DEBUG] High write ratio: blit=0, write=1191 (100.0% writes), screen=40x154
+2026-02-09T10:45:37.817Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:45:38.343Z [ERROR] API error (attempt 8/11): undefined Connection error.
+2026-02-09T10:45:38.345Z [DEBUG] [useDeferredValue] Messages deferred by 1 (29→30)
+2026-02-09T10:45:38.359Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:45:38.393Z [DEBUG] High write ratio: blit=0, write=1194 (100.0% writes), screen=40x154
+2026-02-09T10:46:17.366Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:46:17.839Z [ERROR] API error (attempt 9/11): undefined Connection error.
+2026-02-09T10:46:17.841Z [DEBUG] [useDeferredValue] Messages deferred by 1 (30→31)
+2026-02-09T10:46:17.861Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:46:17.890Z [DEBUG] High write ratio: blit=0, write=1194 (100.0% writes), screen=40x154
+2026-02-09T10:46:54.949Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:46:56.325Z [ERROR] API error (attempt 10/11): undefined Connection error.
+2026-02-09T10:46:56.327Z [DEBUG] [useDeferredValue] Messages deferred by 1 (31→32)
+2026-02-09T10:46:56.334Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:46:56.367Z [DEBUG] High write ratio: blit=0, write=1195 (100.0% writes), screen=40x154
+2026-02-09T10:47:35.068Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:47:35.495Z [ERROR] API error (attempt 11/11): undefined Connection error.
+2026-02-09T10:47:35.495Z [ERROR] Error in API request: Connection error.
+2026-02-09T10:47:35.495Z [ERROR] Connection error details: code=ECONNRESET, message=The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()
+2026-02-09T10:47:35.495Z [ERROR] Error: Error: Connection error.
+    at makeRequest (/$bunfs/root/claude:336:4548)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:47:35.498Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-09T10:47:35.498Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:47:35.498Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:47:35.501Z [DEBUG] [useDeferredValue] Messages deferred by 2 (32→34)
+2026-02-09T10:47:35.505Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:47:35.509Z [DEBUG] High write ratio: blit=0, write=1161 (100.0% writes), screen=38x154
+2026-02-09T10:47:35.510Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:47:35.513Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:47:35.538Z [DEBUG] High write ratio: blit=0, write=1152 (100.0% writes), screen=39x154
+2026-02-09T10:48:35.513Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-02-09T10:48:35.513Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:48:35.513Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-02-09T10:52:38.782Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634358782
+2026-02-09T10:52:38.782Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:52:38.782Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:52:38.782Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:52:38.782Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634358782 to /Users/mvroeder/.claude.json
+2026-02-09T10:52:38.783Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:52:38.784Z [DEBUG] Metadata string for last30days:
+2026-02-09T10:52:38.784Z [DEBUG] <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+<command-args>--debug claude skills structure directory best practice</command-args>
+2026-02-09T10:52:38.784Z [DEBUG] command-message tags in metadata: 1
+2026-02-09T10:52:38.789Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:52:38.789Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:52:38.789Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:52:38.789Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:52:38.790Z [DEBUG] processPromptSlashCommand creating 3 messages for last30days
+2026-02-09T10:52:38.791Z [DEBUG] Message 1: <command-message>last30days</command-message>
+<command-name>/last30days</command-name>
+<command-args>--debug claude skills structure directory best practice</command-args>
+2026-02-09T10:52:38.791Z [DEBUG] Message 2 [META]: [{"type":"text","text":"Base directory for this skill: /Users/mvroeder/.claude/skills/research-last30days\n\n# last30days: Research Any Topic from the Last 30 Days\n\nResearch ANY topic across Reddit,
+2026-02-09T10:52:38.791Z [DEBUG] Message 3: [ATTACHMENT]
+2026-02-09T10:52:38.793Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:52:38.793Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:52:38.793Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:52:38.793Z [DEBUG] FileHistory: Making snapshot for message 851be578-59f2-4d03-80a1-298dc460eb52
+2026-02-09T10:52:38.793Z [DEBUG] FileHistory: Added snapshot for 851be578-59f2-4d03-80a1-298dc460eb52, tracking 0 files
+2026-02-09T10:52:38.795Z [DEBUG] [useDeferredValue] Messages deferred by 3 (34→37)
+2026-02-09T10:52:38.799Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:38.803Z [DEBUG] High write ratio: blit=0, write=1167 (100.0% writes), screen=41x154
+2026-02-09T10:52:38.808Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:52:38.808Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:52:38.810Z [DEBUG] autocompact: tokens=36429 threshold=167000 effectiveWindow=180000
+2026-02-09T10:52:38.810Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:52:38.813Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:52:38.814Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:52:38.814Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:52:38.814Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:38.815Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:52:38.815Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:38.824Z [DEBUG] [useDeferredValue] Messages deferred by 3 (34→37)
+2026-02-09T10:52:38.829Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:38.847Z [DEBUG] High write ratio: blit=0, write=1237 (100.0% writes), screen=43x154
+2026-02-09T10:52:39.663Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:52:39.664Z [DEBUG] [useDeferredValue] Messages deferred by 1 (37→38)
+2026-02-09T10:52:39.669Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:39.692Z [DEBUG] High write ratio: blit=0, write=1237 (100.0% writes), screen=43x154
+2026-02-09T10:52:40.279Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:40.593Z [ERROR] API error (attempt 2/11): undefined Connection error.
+2026-02-09T10:52:40.595Z [DEBUG] [useDeferredValue] Messages deferred by 1 (38→39)
+2026-02-09T10:52:40.600Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:40.626Z [DEBUG] High write ratio: blit=0, write=1237 (100.0% writes), screen=43x154
+2026-02-09T10:52:41.653Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:41.884Z [ERROR] API error (attempt 3/11): undefined Connection error.
+2026-02-09T10:52:41.886Z [DEBUG] [useDeferredValue] Messages deferred by 1 (39→40)
+2026-02-09T10:52:41.894Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:41.919Z [DEBUG] High write ratio: blit=0, write=1237 (100.0% writes), screen=43x154
+2026-02-09T10:52:44.211Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:44.226Z [ERROR] Error: Error: 1P event logging: 20 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:52:44.226Z [ERROR] Error: Error: {"message":"Failed to export 20 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 20 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:52:45.120Z [ERROR] API error (attempt 4/11): undefined Connection error.
+2026-02-09T10:52:45.121Z [DEBUG] [useDeferredValue] Messages deferred by 1 (40→41)
+2026-02-09T10:52:45.129Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:45.151Z [DEBUG] High write ratio: blit=0, write=1316 (100.0% writes), screen=45x154
+2026-02-09T10:52:48.380Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:48.388Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634368388
+2026-02-09T10:52:48.388Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:52:48.389Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:52:48.389Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:52:48.389Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634368388 to /Users/mvroeder/.claude.json
+2026-02-09T10:52:48.389Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:52:48.390Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634368390
+2026-02-09T10:52:48.390Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:52:48.390Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:52:48.390Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:52:48.390Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634368390 to /Users/mvroeder/.claude.json
+2026-02-09T10:52:48.390Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:52:48.392Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:49.874Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:50.180Z [ERROR] API error (attempt 5/11): undefined Connection error.
+2026-02-09T10:52:50.182Z [DEBUG] [useDeferredValue] Messages deferred by 1 (41→42)
+2026-02-09T10:52:50.187Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:50.195Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:58.476Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:52:58.941Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:00.055Z [ERROR] API error (attempt 6/11): undefined Connection error.
+2026-02-09T10:53:00.057Z [DEBUG] [useDeferredValue] Messages deferred by 1 (42→43)
+2026-02-09T10:53:00.060Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:00.067Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:16.188Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:17.179Z [ERROR] API error (attempt 7/11): undefined Connection error.
+2026-02-09T10:53:17.181Z [DEBUG] [useDeferredValue] Messages deferred by 1 (43→44)
+2026-02-09T10:53:17.185Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:17.193Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:50.921Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:51.273Z [ERROR] API error (attempt 8/11): undefined Connection error.
+2026-02-09T10:53:51.275Z [DEBUG] [useDeferredValue] Messages deferred by 1 (44→45)
+2026-02-09T10:53:51.281Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:53:51.290Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:11.058Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:25.338Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:25.351Z [DEBUG] High write ratio: blit=0, write=1333 (100.0% writes), screen=45x154
+2026-02-09T10:54:25.355Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634465355
+2026-02-09T10:54:25.355Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:54:25.355Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:54:25.356Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:54:25.356Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634465355 to /Users/mvroeder/.claude.json
+2026-02-09T10:54:25.356Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:54:25.357Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634465357
+2026-02-09T10:54:25.357Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:54:25.357Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:54:25.357Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:54:25.357Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634465357 to /Users/mvroeder/.claude.json
+2026-02-09T10:54:25.357Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:54:25.358Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:54:25.360Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:25.361Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:54:25.361Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:54:25.361Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-09T10:54:25.361Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-09T10:54:25.396Z [DEBUG] High write ratio: blit=0, write=1333 (100.0% writes), screen=45x154
+2026-02-09T10:54:25.602Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-09T10:54:29.512Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:30.435Z [ERROR] Error: Error: 1P event logging: 6 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:54:30.435Z [ERROR] Error: Error: {"message":"Failed to export 6 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 6 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:54:30.903Z [ERROR] API error (attempt 9/11): undefined Connection error.
+2026-02-09T10:54:30.904Z [DEBUG] [useDeferredValue] Messages deferred by 1 (45→46)
+2026-02-09T10:54:30.910Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:30.932Z [DEBUG] High write ratio: blit=0, write=1333 (100.0% writes), screen=45x154
+2026-02-09T10:54:33.430Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634473430
+2026-02-09T10:54:33.430Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:54:33.430Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:54:33.430Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:54:33.430Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634473430 to /Users/mvroeder/.claude.json
+2026-02-09T10:54:33.430Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:54:38.299Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59772.1770634478299
+2026-02-09T10:54:38.299Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:54:38.299Z [DEBUG] Temp file written successfully, size: 8480 bytes
+2026-02-09T10:54:38.299Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:54:38.299Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59772.1770634478299 to /Users/mvroeder/.claude.json
+2026-02-09T10:54:38.299Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:54:44.081Z [DEBUG] [onCancel] focusedInputDialog=undefined streamMode=requesting
+2026-02-09T10:54:44.083Z [ERROR] Error in API request: Request was aborted.
+2026-02-09T10:54:44.083Z [ERROR] Error: Error: Request was aborted.
+    at D (/$bunfs/root/claude:840:25960)
+    at abort (unknown)
+    at zY (/$bunfs/root/claude:6346:59934)
+    at <anonymous> (/$bunfs/root/claude:6325:10399)
+    at <anonymous> (/$bunfs/root/claude:842:6056)
+    at <anonymous> (/$bunfs/root/claude:842:2371)
+    at $ (/$bunfs/root/claude:842:3221)
+    at emit (/$bunfs/root/claude:685:529)
+    at iMD (/$bunfs/root/claude:691:712)
+    at <anonymous> (/$bunfs/root/claude:656:109397)
+2026-02-09T10:54:44.087Z [DEBUG] [useDeferredValue] Messages deferred by 1 (46→47)
+2026-02-09T10:54:44.092Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:44.097Z [DEBUG] High write ratio: blit=0, write=1328 (100.0% writes), screen=44x154
+2026-02-09T10:54:44.098Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:54:44.107Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:44.131Z [DEBUG] High write ratio: blit=0, write=1297 (100.0% writes), screen=43x154
+2026-02-09T10:54:45.342Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:54:45.342Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:54:45.342Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:54:45.342Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:54:45.343Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:54:45.343Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:54:45.343Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:54:45.343Z [DEBUG] FileHistory: Making snapshot for message 5ce8f41c-4b3e-4470-b24b-e4a95a2aed3a
+2026-02-09T10:54:45.343Z [DEBUG] FileHistory: Added snapshot for 5ce8f41c-4b3e-4470-b24b-e4a95a2aed3a, tracking 0 files
+2026-02-09T10:54:45.345Z [DEBUG] [useDeferredValue] Messages deferred by 1 (47→48)
+2026-02-09T10:54:45.348Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.355Z [DEBUG] High write ratio: blit=0, write=1301 (100.0% writes), screen=44x154
+2026-02-09T10:54:45.360Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:54:45.361Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:54:45.361Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:54:45.362Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.b85; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:54:45.362Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:54:45.362Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:54:45.362Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.363Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:54:45.363Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.364Z [DEBUG] autocompact: tokens=36441 threshold=167000 effectiveWindow=180000
+2026-02-09T10:54:45.364Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:54:45.367Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:54:45.368Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:54:45.368Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:54:45.368Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.368Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:54:45.368Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.377Z [DEBUG] [useDeferredValue] Messages deferred by 1 (47→48)
+2026-02-09T10:54:45.381Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.401Z [DEBUG] High write ratio: blit=0, write=1601 (100.0% writes), screen=47x154
+2026-02-09T10:54:45.561Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:54:45.563Z [DEBUG] [useDeferredValue] Messages deferred by 1 (48→49)
+2026-02-09T10:54:45.571Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:45.591Z [DEBUG] High write ratio: blit=0, write=1601 (100.0% writes), screen=47x154
+2026-02-09T10:54:46.063Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:54:46.075Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:48.079Z [ERROR] API error (attempt 2/11): undefined Connection error.
+2026-02-09T10:54:48.080Z [DEBUG] [useDeferredValue] Messages deferred by 1 (49→50)
+2026-02-09T10:54:48.087Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:48.110Z [DEBUG] High write ratio: blit=0, write=1583 (100.0% writes), screen=47x154
+2026-02-09T10:54:49.263Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:49.534Z [ERROR] Error: Error: 1P event logging: 33 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:54:49.534Z [ERROR] Error: Error: {"message":"Failed to export 33 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 33 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:54:49.624Z [ERROR] API error (attempt 3/11): undefined Connection error.
+2026-02-09T10:54:49.625Z [DEBUG] [useDeferredValue] Messages deferred by 1 (50→51)
+2026-02-09T10:54:49.634Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:49.667Z [DEBUG] High write ratio: blit=0, write=1583 (100.0% writes), screen=47x154
+2026-02-09T10:54:51.957Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:52.874Z [ERROR] API error (attempt 4/11): undefined Connection error.
+2026-02-09T10:54:52.876Z [DEBUG] [useDeferredValue] Messages deferred by 1 (51→52)
+2026-02-09T10:54:52.884Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:52.910Z [DEBUG] High write ratio: blit=0, write=1662 (100.0% writes), screen=49x154
+2026-02-09T10:54:57.032Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:57.470Z [ERROR] API error (attempt 5/11): undefined Connection error.
+2026-02-09T10:54:57.472Z [DEBUG] [useDeferredValue] Messages deferred by 1 (52→53)
+2026-02-09T10:54:57.482Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:57.508Z [DEBUG] High write ratio: blit=0, write=1662 (100.0% writes), screen=49x154
+2026-02-09T10:54:59.708Z [DEBUG] [onCancel] focusedInputDialog=undefined streamMode=requesting
+2026-02-09T10:54:59.709Z [ERROR] Error in API request: Request was aborted.
+2026-02-09T10:54:59.709Z [ERROR] Error: Error: Request was aborted.
+    at D (/$bunfs/root/claude:840:25960)
+    at abort (unknown)
+    at zY (/$bunfs/root/claude:6346:59934)
+    at <anonymous> (/$bunfs/root/claude:6325:10399)
+    at <anonymous> (/$bunfs/root/claude:842:6056)
+    at <anonymous> (/$bunfs/root/claude:842:2371)
+    at $ (/$bunfs/root/claude:842:3221)
+    at emit (/$bunfs/root/claude:685:529)
+    at iMD (/$bunfs/root/claude:691:712)
+    at <anonymous> (/$bunfs/root/claude:656:109397)
+2026-02-09T10:54:59.711Z [DEBUG] [useDeferredValue] Messages deferred by 1 (53→54)
+2026-02-09T10:54:59.714Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:59.716Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:54:59.719Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:54:59.743Z [DEBUG] High write ratio: blit=0, write=1620 (100.0% writes), screen=46x154
+2026-02-09T10:55:11.870Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:55:11.879Z [DEBUG] High write ratio: blit=0, write=2137 (100.0% writes), screen=64x154
+2026-02-09T10:55:21.001Z [DEBUG] [useDeferredValue] Messages deferred by 2 (54→56)
+2026-02-09T10:55:21.005Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:55:21.012Z [DEBUG] High write ratio: blit=0, write=1634 (100.0% writes), screen=48x154
+2026-02-09T10:55:21.016Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:55:21.017Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:55:21.019Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:55:21.026Z [DEBUG] [useDeferredValue] Messages deferred by 2 (54→56)
+2026-02-09T10:55:21.028Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:55:21.029Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:55:21.031Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:55:21.055Z [DEBUG] High write ratio: blit=0, write=1658 (100.0% writes), screen=49x154
+2026-02-09T10:55:33.574Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-09T10:55:33.574Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:55:33.574Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

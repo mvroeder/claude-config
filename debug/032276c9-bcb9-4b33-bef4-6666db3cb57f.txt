@@ -1,0 +1,361 @@
+2026-02-09T10:42:22.150Z [DEBUG] [init] configureGlobalMTLS starting
+2026-02-09T10:42:22.151Z [DEBUG] [init] configureGlobalMTLS complete
+2026-02-09T10:42:22.151Z [DEBUG] [init] configureGlobalAgents starting
+2026-02-09T10:42:22.151Z [DEBUG] [init] configureGlobalAgents complete
+2026-02-09T10:42:22.156Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-02-09T10:42:22.158Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-02-09T10:42:22.159Z [DEBUG] [STARTUP] Running setup()...
+2026-02-09T10:42:22.159Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-02-09T10:42:22.161Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/mvroeder/.claude/skills, project=[]
+2026-02-09T10:42:22.162Z [DEBUG] Error log sink initialized
+2026-02-09T10:42:22.163Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-02-09T10:42:22.163Z [DEBUG] Total plugin skills loaded: 0
+2026-02-09T10:42:22.163Z [DEBUG] Total plugin commands loaded: 0
+2026-02-09T10:42:22.163Z [DEBUG] [STARTUP] setup() completed in 4ms
+2026-02-09T10:42:22.163Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-02-09T10:42:22.165Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-02-09T10:42:22.165Z [DEBUG] Total plugin agents loaded: 0
+2026-02-09T10:42:22.165Z [DEBUG] Loaded 1 unique skills (managed: 0, user: 1, project: 0, additional: 0, legacy commands: 0)
+2026-02-09T10:42:22.166Z [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 2 bundled skills
+2026-02-09T10:42:22.175Z [DEBUG] [STARTUP] Commands and agents loaded in 12ms
+2026-02-09T10:42:22.175Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-02-09T10:42:22.175Z [DEBUG] [render] initLayout starting
+2026-02-09T10:42:22.175Z [DEBUG] Layout engine: yoga
+2026-02-09T10:42:22.178Z [DEBUG] [Claude in Chrome] Found chrome profiles: Default
+2026-02-09T10:42:22.180Z [DEBUG] [render] initLayout complete
+2026-02-09T10:42:22.183Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:42:22.185Z [DEBUG] [render] first ink render: 351ms since process start
+2026-02-09T10:42:22.185Z [DEBUG] [keybindings] Watching for changes to /Users/mvroeder/.claude/keybindings.json
+2026-02-09T10:42:22.204Z [DEBUG] [Claude in Chrome] Found edge profiles: Default
+2026-02-09T10:42:22.216Z [DEBUG] Grove: Using fresh cached config
+2026-02-09T10:42:22.220Z [DEBUG] [render] initLayout starting
+2026-02-09T10:42:22.221Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-02-09T10:42:22.222Z [DEBUG] [render] initLayout complete
+2026-02-09T10:42:22.223Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:42:22.229Z [DEBUG] [render] first ink render: 395ms since process start
+2026-02-09T10:42:22.234Z [DEBUG] Git remote URL: git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:42:22.234Z [DEBUG] Parsed repository: mvroeder/hyperliquid-trading-agent from git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:42:22.234Z [DEBUG] Parsed repository: mvroeder/hyperliquid-trading-agent from URL: git@github.com:mvroeder/hyperliquid-trading-agent.git
+2026-02-09T10:42:22.234Z [DEBUG] Path /Users/mvroeder/dev/experiments/hyperliquid already tracked for repo mvroeder/hyperliquid-trading-agent
+2026-02-09T10:42:22.234Z [DEBUG] [Claude in Chrome] Extension not found in any browser
+2026-02-09T10:42:22.533Z [DEBUG] [STARTUP] showSetupScreens() completed in 358ms
+2026-02-09T10:42:22.533Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-02-09T10:42:22.533Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-02-09T10:42:22.533Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-02-09T10:42:22.534Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:22.534Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:22.536Z [DEBUG] Total LSP servers loaded: 0
+2026-02-09T10:42:22.538Z [DEBUG] [STARTUP] MCP configs loaded in 382ms
+2026-02-09T10:42:22.538Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-02-09T10:42:22.538Z [DEBUG] LSP manager initialized with 0 servers
+2026-02-09T10:42:22.538Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:22.540Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-02-09T10:42:22.540Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:22.540Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-02-09T10:42:22.540Z [DEBUG] LSP server manager initialized successfully
+2026-02-09T10:42:22.540Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-02-09T10:42:22.546Z [DEBUG] [Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)
+2026-02-09T10:42:22.549Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59637.1770633742549
+2026-02-09T10:42:22.549Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:42:22.549Z [DEBUG] Temp file written successfully, size: 8047 bytes
+2026-02-09T10:42:22.549Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:42:22.549Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59637.1770633742549 to /Users/mvroeder/.claude.json
+2026-02-09T10:42:22.549Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:42:22.550Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-02-09T10:42:22.550Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-02-09T10:42:22.550Z [DEBUG] [render] initLayout starting
+2026-02-09T10:42:22.552Z [DEBUG] [render] initLayout complete
+2026-02-09T10:42:22.558Z [DEBUG] [keybindings] KeybindingSetup initialized with 100 bindings, 0 warnings
+2026-02-09T10:42:22.581Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59637.1770633742581
+2026-02-09T10:42:22.581Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:42:22.582Z [DEBUG] Temp file written successfully, size: 8047 bytes
+2026-02-09T10:42:22.582Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:42:22.582Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59637.1770633742581 to /Users/mvroeder/.claude.json
+2026-02-09T10:42:22.582Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:42:22.583Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59637.1770633742583
+2026-02-09T10:42:22.583Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:42:22.583Z [DEBUG] Temp file written successfully, size: 8047 bytes
+2026-02-09T10:42:22.583Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:42:22.583Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59637.1770633742583 to /Users/mvroeder/.claude.json
+2026-02-09T10:42:22.583Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:42:22.583Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:42:22.584Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-02-09T10:42:22.585Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:42:22.585Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-02-09T10:42:22.585Z [DEBUG] performStartupChecks called
+2026-02-09T10:42:22.585Z [DEBUG] Trust not accepted for current directory - skipping plugin installations
+2026-02-09T10:42:22.586Z [DEBUG] FileHistory: Added snapshot for db87841c-d585-4f17-804d-fca7b37b43ce, tracking 0 files
+2026-02-09T10:42:22.610Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude/todos/032276c9-bcb9-4b33-bef4-6666db3cb57f-agent-032276c9-bcb9-4b33-bef4-6666db3cb57f.json.tmp.59637.1770633742610
+2026-02-09T10:42:22.611Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-02-09T10:42:22.611Z [DEBUG] Renaming /Users/mvroeder/.claude/todos/032276c9-bcb9-4b33-bef4-6666db3cb57f-agent-032276c9-bcb9-4b33-bef4-6666db3cb57f.json.tmp.59637.1770633742610 to /Users/mvroeder/.claude/todos/032276c9-bcb9-4b33-bef4-6666db3cb57f-agent-032276c9-bcb9-4b33-bef4-6666db3cb57f.json
+2026-02-09T10:42:22.611Z [DEBUG] File /Users/mvroeder/.claude/todos/032276c9-bcb9-4b33-bef4-6666db3cb57f-agent-032276c9-bcb9-4b33-bef4-6666db3cb57f.json written atomically
+2026-02-09T10:42:22.611Z [DEBUG] [render] first ink render: 776ms since process start
+2026-02-09T10:42:22.611Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-02-09T10:42:22.977Z [DEBUG] Watching for changes in setting files /Users/mvroeder/.claude/settings.json...
+2026-02-09T10:42:22.978Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-02-09T10:42:22.978Z [DEBUG] [claudeai-mcp] Gate returned: true
+2026-02-09T10:42:22.978Z [DEBUG] [claudeai-mcp] Fetching from https://api.anthropic.com/v1/mcp_servers?limit=1000
+2026-02-09T10:42:22.985Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-02-09T10:42:22.986Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:42:22.986Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:42:22.988Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:42:22.988Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:42:22.989Z [DEBUG] Sending 2 skills via attachment (initial, 2 total sent)
+2026-02-09T10:42:22.991Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:42:22.991Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:22.991Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:22.991Z [DEBUG] FileHistory: Making snapshot for message a0815093-0964-4d15-8179-6f764786c872
+2026-02-09T10:42:22.991Z [DEBUG] FileHistory: Added snapshot for a0815093-0964-4d15-8179-6f764786c872, tracking 0 files
+2026-02-09T10:42:22.994Z [DEBUG] Org penguin mode: disabled (extra_usage_disabled)
+2026-02-09T10:42:22.995Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59637.1770633742995
+2026-02-09T10:42:22.995Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:42:22.995Z [DEBUG] Temp file written successfully, size: 8047 bytes
+2026-02-09T10:42:22.995Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:42:22.995Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59637.1770633742995 to /Users/mvroeder/.claude.json
+2026-02-09T10:42:22.995Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:42:22.996Z [DEBUG] Watching for changes in skill/command directories: /Users/mvroeder/.claude/skills...
+2026-02-09T10:42:22.996Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-02-09T10:42:22.997Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-02-09T10:42:23.000Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-09T10:42:23.002Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.008Z [DEBUG] Detected Homebrew cask installation: /opt/homebrew/Caskroom/claude-code/2.1.37/claude
+2026-02-09T10:42:23.009Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:42:23.010Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:42:23.010Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:42:23.012Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.b1b; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:23.013Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:23.013Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:23.013Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.013Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:23.013Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.014Z [DEBUG] Total plugin output styles loaded: 0
+2026-02-09T10:42:23.024Z [DEBUG] autocompact: tokens=125 threshold=167000 effectiveWindow=180000
+2026-02-09T10:42:23.024Z [DEBUG] Auto tool search disabled: 0 tokens (threshold: 20000, 10% of context) [source: query]
+2026-02-09T10:42:23.029Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:23.030Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:23.030Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:23.030Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.030Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:23.030Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.050Z [DEBUG] [useDeferredValue] Messages deferred by 2 (0→2)
+2026-02-09T10:42:23.062Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.075Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:42:23.076Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.981; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:23.076Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:23.076Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:23.076Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.076Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:23.076Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.145Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:42:23.145Z [DEBUG] [useDeferredValue] Messages deferred by 1 (2→3)
+2026-02-09T10:42:23.150Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.193Z [DEBUG] [claudeai-mcp] Fetched 2 servers
+2026-02-09T10:42:23.194Z [DEBUG] MCP server "claude.ai Canva": Initializing claude.ai proxy transport for server mcpsrv_01XfycMruheCFE6yrnb7drkk
+2026-02-09T10:42:23.194Z [DEBUG] MCP server "claude.ai Canva": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01XfycMruheCFE6yrnb7drkk
+2026-02-09T10:42:23.194Z [DEBUG] MCP server "claude.ai Canva": claude.ai proxy transport created successfully
+2026-02-09T10:42:23.196Z [DEBUG] MCP server "claude.ai Canva": Starting connection with timeout of 30000ms
+2026-02-09T10:42:23.196Z [DEBUG] MCP server "claude.ai Gamma": Initializing claude.ai proxy transport for server mcpsrv_01VFwQf5SJ8ZuYpDkS4k5Xdu
+2026-02-09T10:42:23.196Z [DEBUG] MCP server "claude.ai Gamma": Using claude.ai proxy at https://mcp-proxy.anthropic.com/v1/mcp/mcpsrv_01VFwQf5SJ8ZuYpDkS4k5Xdu
+2026-02-09T10:42:23.196Z [DEBUG] MCP server "claude.ai Gamma": claude.ai proxy transport created successfully
+2026-02-09T10:42:23.196Z [DEBUG] MCP server "claude.ai Gamma": Starting connection with timeout of 30000ms
+2026-02-09T10:42:23.247Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/Caskroom/claude-code/2.1.37/claude)
+2026-02-09T10:42:23.416Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-02-09T10:42:23.416Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-02-09T10:42:23.517Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:23.517Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:23.517Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:23.576Z [DEBUG] MCP server "claude.ai Canva": claude.ai proxy connection failed after 382ms: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxMb49cB4fga6D5qGdep"}
+2026-02-09T10:42:23.577Z [ERROR] MCP server "claude.ai Canva" Error: Streamable HTTP error: Error POSTing to endpoint: {"type":"error","error":{"type":"authentication_error","message":"MCP server requires authentication but no OAuth token is configured."},"request_id":"req_011CXxMb49cB4fga6D5qGdep"}
+2026-02-09T10:42:23.577Z [DEBUG] MCP server "claude.ai Canva": Authentication required for claude.ai proxy server
+2026-02-09T10:42:23.628Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:23.771Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:23.974Z [DEBUG] MCP server "claude.ai Gamma": Successfully connected to claudeai-proxy server in 778ms
+2026-02-09T10:42:23.974Z [DEBUG] MCP server "claude.ai Gamma": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"gamma-mcp","version":"1.0.0"}}
+2026-02-09T10:42:24.290Z [DEBUG] MCP server "claude.ai Gamma": CLAUDEAI-PROXY connection dropped after 0s uptime
+2026-02-09T10:42:24.290Z [DEBUG] MCP server "claude.ai Gamma": Connection error: Streamable HTTP error: Failed to open SSE stream: Not Found
+2026-02-09T10:42:24.290Z [DEBUG] MCP server "claude.ai Gamma": CLAUDEAI-PROXY connection dropped after 0s uptime
+2026-02-09T10:42:24.290Z [DEBUG] MCP server "claude.ai Gamma": Connection error: Streamable HTTP error: Failed to open SSE stream: Not Found
+2026-02-09T10:42:24.351Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:24.562Z [ERROR] API error (attempt 2/11): undefined Connection error.
+2026-02-09T10:42:24.563Z [DEBUG] [useDeferredValue] Messages deferred by 1 (3→4)
+2026-02-09T10:42:24.569Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:24.709Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:25.542Z [ERROR] Error: Error: Connection error.
+    at makeRequest (/$bunfs/root/claude:336:4548)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:25.543Z [DEBUG] countTokensWithFallback: API returned null, trying haiku fallback (21 tools)
+2026-02-09T10:42:25.543Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:25.543Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:25.543Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:25.739Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:25.982Z [ERROR] API error (attempt 3/11): undefined Connection error.
+2026-02-09T10:42:25.983Z [DEBUG] [useDeferredValue] Messages deferred by 1 (4→5)
+2026-02-09T10:42:25.987Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:27.394Z [ERROR] Error: Error: 1P event logging: 72 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:27.394Z [ERROR] Error: Error: {"message":"Failed to export 72 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 72 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:28.170Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:28.342Z [ERROR] API error (attempt 4/11): undefined Connection error.
+2026-02-09T10:42:28.344Z [DEBUG] [useDeferredValue] Messages deferred by 1 (5→6)
+2026-02-09T10:42:28.353Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:32.562Z [DEBUG] [onCancel] focusedInputDialog=undefined streamMode=requesting
+2026-02-09T10:42:32.565Z [ERROR] Error in API request: Request was aborted.
+2026-02-09T10:42:32.565Z [ERROR] Error: Error: Request was aborted.
+    at D (/$bunfs/root/claude:840:25960)
+    at abort (unknown)
+    at zY (/$bunfs/root/claude:6346:59934)
+    at <anonymous> (/$bunfs/root/claude:6325:10399)
+    at <anonymous> (/$bunfs/root/claude:842:6056)
+    at <anonymous> (/$bunfs/root/claude:842:2371)
+    at $ (/$bunfs/root/claude:842:3221)
+    at emit (/$bunfs/root/claude:685:529)
+    at iMD (/$bunfs/root/claude:691:712)
+    at <anonymous> (/$bunfs/root/claude:656:109397)
+2026-02-09T10:42:32.568Z [DEBUG] Writing to temp file: /Users/mvroeder/.claude.json.tmp.59637.1770633752568
+2026-02-09T10:42:32.568Z [DEBUG] Preserving file permissions: 100600
+2026-02-09T10:42:32.568Z [DEBUG] Temp file written successfully, size: 8047 bytes
+2026-02-09T10:42:32.568Z [DEBUG] Applied original permissions to temp file
+2026-02-09T10:42:32.568Z [DEBUG] Renaming /Users/mvroeder/.claude.json.tmp.59637.1770633752568 to /Users/mvroeder/.claude.json
+2026-02-09T10:42:32.568Z [DEBUG] File /Users/mvroeder/.claude.json written atomically
+2026-02-09T10:42:32.569Z [DEBUG] [useDeferredValue] Messages deferred by 1 (6→7)
+2026-02-09T10:42:32.572Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:32.575Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:42:32.584Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:36.693Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:42:36.693Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:42:36.693Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:42:36.693Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:42:36.694Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:42:36.694Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:36.694Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:36.694Z [DEBUG] FileHistory: Making snapshot for message 2f49a309-b8ea-4ce6-bc68-f459f6f4bfca
+2026-02-09T10:42:36.694Z [DEBUG] FileHistory: Added snapshot for 2f49a309-b8ea-4ce6-bc68-f459f6f4bfca, tracking 0 files
+2026-02-09T10:42:36.696Z [DEBUG] [useDeferredValue] Messages deferred by 1 (7→8)
+2026-02-09T10:42:36.700Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:36.708Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:42:36.709Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:42:36.709Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:42:36.709Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.b1b; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:36.710Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:36.710Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:36.710Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:36.710Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:36.710Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:36.711Z [DEBUG] autocompact: tokens=134 threshold=167000 effectiveWindow=180000
+2026-02-09T10:42:36.711Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:36.711Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:36.711Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:36.714Z [DEBUG] [useDeferredValue] Messages deferred by 1 (7→8)
+2026-02-09T10:42:36.724Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:37.208Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:42:37.211Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:37.212Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:37.212Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:37.212Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:37.212Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:37.212Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:37.347Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:38.600Z [ERROR] Error: Error: 1P event logging: 30 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:38.601Z [ERROR] Error: Error: {"message":"Failed to export 30 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 30 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:39.755Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:39.897Z [DEBUG] [useDeferredValue] Messages deferred by 1 (8→9)
+2026-02-09T10:42:39.911Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:40.604Z [DEBUG] [useDeferredValue] Messages deferred by 1 (9→10)
+2026-02-09T10:42:40.611Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:41.138Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-09T10:42:41.138Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:41.138Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:41.139Z [DEBUG] [useDeferredValue] Messages deferred by 1 (10→11)
+2026-02-09T10:42:41.142Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:41.145Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:42:41.148Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.944Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-02-09T10:42:44.944Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-02-09T10:42:44.944Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-02-09T10:42:44.944Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-02-09T10:42:44.945Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-02-09T10:42:44.945Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:44.945Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:44.945Z [DEBUG] FileHistory: Making snapshot for message 6b1a9b27-a3e9-4175-bb21-ae227a7db4ad
+2026-02-09T10:42:44.945Z [DEBUG] FileHistory: Added snapshot for 6b1a9b27-a3e9-4175-bb21-ae227a7db4ad, tracking 0 files
+2026-02-09T10:42:44.945Z [DEBUG] [useDeferredValue] Messages deferred by 1 (11→12)
+2026-02-09T10:42:44.948Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.952Z [DEBUG] Started caffeinate to prevent sleep
+2026-02-09T10:42:44.953Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-02-09T10:42:44.953Z [DEBUG] [SystemPrompt] path=simple proactive=false
+2026-02-09T10:42:44.953Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.b1b; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:44.953Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:44.953Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:44.953Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.953Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:44.953Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.954Z [DEBUG] autocompact: tokens=23573 threshold=167000 effectiveWindow=180000
+2026-02-09T10:42:44.954Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:42:44.955Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:44.956Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:44.956Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:44.956Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.956Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:44.956Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:44.964Z [DEBUG] [useDeferredValue] Messages deferred by 1 (11→12)
+2026-02-09T10:42:44.967Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:45.538Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:45.781Z [ERROR] API error (attempt 1/11): undefined Connection error.
+2026-02-09T10:42:45.782Z [DEBUG] [useDeferredValue] Messages deferred by 1 (12→13)
+2026-02-09T10:42:45.787Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:46.313Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:48.305Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:48.308Z [DEBUG] [useDeferredValue] Messages deferred by 1 (13→14)
+2026-02-09T10:42:48.317Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:49.220Z [DEBUG] [useDeferredValue] Messages deferred by 1 (14→15)
+2026-02-09T10:42:49.225Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:49.935Z [DEBUG] [useDeferredValue] Messages deferred by 1 (15→16)
+2026-02-09T10:42:49.945Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:50.223Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-02-09T10:42:50.223Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:50.223Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:50.223Z [DEBUG] autocompact: tokens=23943 threshold=167000 effectiveWindow=180000
+2026-02-09T10:42:50.223Z [DEBUG] Tool search disabled via experiment (tengu_tst_kx7): below threshold, deferred tools present [source: query]
+2026-02-09T10:42:50.225Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=00000;
+2026-02-09T10:42:50.226Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-02-09T10:42:50.226Z [DEBUG] [API:auth] OAuth token check starting
+2026-02-09T10:42:50.226Z [DEBUG] [API:auth] OAuth token check complete
+2026-02-09T10:42:50.226Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:50.226Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:50.229Z [DEBUG] Fast mode unavailable: Fast mode requires extra usage billing · /extra-usage to enable
+2026-02-09T10:42:50.233Z [DEBUG] Stopped caffeinate, allowing sleep
+2026-02-09T10:42:50.393Z [ERROR] Error: Error: 1P event logging: 30 events failed to export (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())
+    at queueFailedEvents (/$bunfs/root/claude:1861:2350)
+    at async doExport (/$bunfs/root/claude:1861:1257)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:50.393Z [ERROR] Error: Error: {"message":"Failed to export 30 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())","originalLine":"1861","originalColumn":"1409","line":"1861","column":"1409","sourceURL":"/$bunfs/root/claude","stack":"Error: Failed to export 30 events (code=ECONNRESET, The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())\n    at doExport (/$bunfs/root/claude:1861:1409)\n    at processTicksAndRejections (native:7:39)","name":"Error"}
+    at error (/$bunfs/root/claude:1904:25028)
+    at <anonymous> (/$bunfs/root/claude:1856:21223)
+    at zb7 (/$bunfs/root/claude:1856:21767)
+    at <anonymous> (/$bunfs/root/claude:1857:17366)
+    at processTicksAndRejections (native:7:39)
+2026-02-09T10:42:52.198Z [DEBUG] Stream started - received first chunk
+2026-02-09T10:42:52.198Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-02-09T10:42:52.253Z [DEBUG] Getting matching hook commands for SubagentStop with query:
+2026-02-09T10:42:52.253Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:52.253Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-02-09T10:42:52.253Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=3 output=5 cacheRead=23573 cacheCreate=385
+2026-02-09T10:42:52.254Z [DEBUG] [Speculation] enabled=false
+2026-02-09T10:42:56.680Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-02-09T10:42:56.680Z [DEBUG] Found 0 hook matchers in settings
+2026-02-09T10:42:56.680Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)
