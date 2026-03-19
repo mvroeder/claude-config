@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Transcribe and summarize YouTube videos using yt-dlp + Claude API."""
+"""Transcribe and summarize YouTube videos using yt-dlp + Claude API.
+
+Hybrid transcription: tries YouTube subtitles first, falls back to Whisper.
+"""
 
 import argparse
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -11,9 +15,7 @@ import tempfile
 try:
     import anthropic
 except ImportError:
-    print("Missing dependency: anthropic")
-    print("Install with: uv pip install anthropic")
-    sys.exit(1)
+    anthropic = None
 
 
 def extract_video_id(url: str) -> str:
@@ -39,8 +41,8 @@ def get_video_title(url: str) -> str:
     return result.stdout.strip() or "Unknown Title"
 
 
-def fetch_transcript(url: str, languages: list[str]) -> str:
-    """Download auto-generated subtitles via yt-dlp and return as plain text."""
+def fetch_transcript_subtitles(url: str, languages: list[str]) -> str | None:
+    """Try to download auto-generated subtitles via yt-dlp. Returns None if unavailable."""
     with tempfile.TemporaryDirectory() as tmpdir:
         out_template = os.path.join(tmpdir, "subs")
         cmd = [
@@ -57,19 +59,76 @@ def fetch_transcript(url: str, languages: list[str]) -> str:
         ]
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
-            raise RuntimeError(
-                f"yt-dlp failed: {result.stderr.strip() or 'unknown error'}"
-            )
+            return None
 
-        # Find the downloaded subtitle file
         vtt_files = [f for f in os.listdir(tmpdir) if f.endswith(".vtt")]
         if not vtt_files:
-            raise FileNotFoundError(
-                "No subtitles found. The video may not have captions."
-            )
+            return None
 
         vtt_path = os.path.join(tmpdir, vtt_files[0])
         return vtt_to_plain_text(vtt_path)
+
+
+def fetch_transcript_whisper(url: str) -> str:
+    """Download audio via yt-dlp and transcribe with Whisper."""
+    if not shutil.which("whisper"):
+        raise RuntimeError(
+            "whisper not found. Install with: uv pip install openai-whisper"
+        )
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        audio_path = os.path.join(tmpdir, "audio")
+        # Download audio only
+        cmd = [
+            "yt-dlp",
+            "-x",
+            "--audio-format",
+            "mp3",
+            "-o",
+            audio_path + ".%(ext)s",
+            url,
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"yt-dlp audio download failed: {result.stderr.strip() or 'unknown error'}"
+            )
+
+        # Find the downloaded audio file
+        audio_files = [f for f in os.listdir(tmpdir) if f.startswith("audio")]
+        if not audio_files:
+            raise FileNotFoundError("Audio download produced no output file.")
+        audio_file = os.path.join(tmpdir, audio_files[0])
+
+        # Transcribe with Whisper
+        print("Transcribing with Whisper (this may take a while)...")
+        result = subprocess.run(
+            [
+                "whisper",
+                audio_file,
+                "--model",
+                "base",
+                "--output_format",
+                "txt",
+                "--output_dir",
+                tmpdir,
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Whisper failed: {result.stderr.strip() or 'unknown error'}"
+            )
+
+        # Read the transcript
+        txt_files = [f for f in os.listdir(tmpdir) if f.endswith(".txt")]
+        if not txt_files:
+            raise FileNotFoundError("Whisper produced no transcript output.")
+
+        txt_path = os.path.join(tmpdir, txt_files[0])
+        with open(txt_path, encoding="utf-8") as f:
+            return f.read().strip()
 
 
 def vtt_to_plain_text(path: str) -> str:
@@ -82,7 +141,6 @@ def vtt_to_plain_text(path: str) -> str:
 
     for line in lines:
         line = line.strip()
-        # Skip VTT headers, timestamps, and empty lines
         if (
             not line
             or line.startswith("WEBVTT")
@@ -92,9 +150,7 @@ def vtt_to_plain_text(path: str) -> str:
             or "-->" in line
         ):
             continue
-        # Strip VTT tags like <c> </c> <00:00:01.234>
         line = re.sub(r"<[^>]+>", "", line)
-        # Deduplicate repeated lines (common in auto-subs)
         if line not in seen:
             seen.add(line)
             text_lines.append(line)
@@ -104,6 +160,11 @@ def vtt_to_plain_text(path: str) -> str:
 
 def summarize(transcript: str, title: str, language: str, model: str) -> str:
     """Send the transcript to Claude for summarization."""
+    if anthropic is None:
+        print("Missing dependency: anthropic")
+        print("Install with: uv pip install anthropic")
+        sys.exit(1)
+
     client = anthropic.Anthropic()
 
     prompt = f"""Here is the transcript of a YouTube video titled "{title}".
@@ -150,10 +211,15 @@ def main():
         action="store_true",
         help="Only output the transcript, skip summarization",
     )
+    parser.add_argument(
+        "--whisper",
+        action="store_true",
+        help="Force Whisper transcription instead of YouTube subtitles",
+    )
     args = parser.parse_args()
 
     # Check yt-dlp is installed
-    if not subprocess.run(["which", "yt-dlp"], capture_output=True).returncode == 0:
+    if not shutil.which("yt-dlp"):
         print("Error: yt-dlp not found. Install with: uv pip install yt-dlp")
         sys.exit(1)
 
@@ -165,13 +231,33 @@ def main():
 
     languages = [lang.strip() for lang in args.lang.split(",")]
 
-    print(f"Fetching video title...")
+    print("Fetching video title...")
     title = get_video_title(args.url)
     print(f"Title: {title}\n")
 
-    print(f"Extracting transcript ({', '.join(languages)})...")
-    transcript = fetch_transcript(args.url, languages)
-    print(f"Transcript: {len(transcript)} characters\n")
+    # Hybrid transcription: subtitles first, Whisper as fallback
+    transcript = None
+    if args.whisper:
+        print("Transcribing with Whisper (forced)...")
+        transcript = fetch_transcript_whisper(args.url)
+        print(f"Transcript (Whisper): {len(transcript)} characters\n")
+    else:
+        print(f"Extracting subtitles ({', '.join(languages)})...")
+        transcript = fetch_transcript_subtitles(args.url, languages)
+        if transcript:
+            print(f"Transcript (subtitles): {len(transcript)} characters\n")
+        else:
+            print("No subtitles found.")
+            if shutil.which("whisper"):
+                print("Falling back to Whisper transcription...\n")
+                transcript = fetch_transcript_whisper(args.url)
+                print(f"Transcript (Whisper): {len(transcript)} characters\n")
+            else:
+                print(
+                    "Error: No subtitles available and Whisper is not installed."
+                )
+                print("Install Whisper with: uv pip install openai-whisper")
+                sys.exit(1)
 
     if args.transcript_only:
         print(transcript)
