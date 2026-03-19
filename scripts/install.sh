@@ -18,7 +18,7 @@ if [ -z "${CLAUDE_CONFIG_REPO:-}" ]; then
   echo ""
   echo "Add this to your ~/.zshrc (or ~/.bashrc):"
   echo ""
-  echo "  export CLAUDE_CONFIG_REPO=\"\$HOME/Projects/claude-config\""
+  echo "  export CLAUDE_CONFIG_REPO=\"\$HOME/dev/claude-config\""
   echo ""
   echo "Then reload your shell and run this script again."
   exit 1
