@@ -5,12 +5,16 @@
 !.gitignore
 !CLAUDE.md
 !settings.json
+!.env.example
 !commands/
 !commands/**
 !skills/
 !skills/**
 !.claude/
 !.claude/**
+
+# Secrets — NEVER commit
+.env
 
 # Innerhalb von Skills ignorieren
 **/__pycache__/

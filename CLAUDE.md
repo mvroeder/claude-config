@@ -16,6 +16,15 @@
 - IMPORTANT: Secrets gehören in .env — nie committen, nie in Output zeigen
 
 ## Umgebung
-- macOS (Apple Silicon)
+- Lokal: macOS (Apple Silicon)
+- Cloud: exe.dev (Linux VM, persistent)
 - GitHub (Username: mvroeder)
 - Keine absoluten Pfade in Configs — Projekte laufen auf mehreren Maschinen
+
+## exe.dev Cloud Setup
+- VM erstellen: `ssh exe.dev new`
+- Repo klonen: `git clone <repo-url> ~/claude-config`
+- Setup ausführen: `bash ~/claude-config/.claude/hooks/exe-dev-setup.sh`
+- API-Keys konfigurieren: `cp .env.example .env && chmod 600 .env`
+- Der SessionStart-Hook lädt automatisch `.env` und verlinkt Skills
+- Agent-Daten liegen unter `~/agent/` (workspace, state, logs, scripts)
