@@ -1,33 +1,22 @@
 #!/bin/bash
 set -euo pipefail
 
-# Only run in remote/cloud environments
-if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
-  exit 0
+# ── Project-level SessionStart hook ──
+# Delegates to sync-skills.sh with the local repo as source.
+# This runs when Claude Code is started inside the claude-config repo itself.
+
+# Determine skills source (works for both local and remote)
+if [ "${CLAUDE_CODE_REMOTE:-}" = "true" ]; then
+  REPO_ROOT="${CLAUDE_PROJECT_DIR}"
+else
+  REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 fi
 
-SKILLS_SOURCE="${CLAUDE_PROJECT_DIR}/skills"
-SKILLS_TARGET="${HOME}/.claude/skills"
+SYNC_SCRIPT="${REPO_ROOT}/scripts/sync-skills.sh"
 
-mkdir -p "$SKILLS_TARGET"
-
-# Copy all skill directories from the repo (symlinks are not followed by Claude Code)
-for skill_dir in "$SKILLS_SOURCE"/*/; do
-  [ -d "$skill_dir" ] || continue
-  skill_name="$(basename "$skill_dir")"
-  target="$SKILLS_TARGET/$skill_name"
-
-  # Skip if target exists and source hasn't changed
-  if [ -d "$target" ] && [ ! -L "$target" ]; then
-    # Re-copy if source is newer than target
-    src_mtime="$(stat -c %Y "$skill_dir" 2>/dev/null || stat -f %m "$skill_dir")"
-    tgt_mtime="$(stat -c %Y "$target" 2>/dev/null || stat -f %m "$target")"
-    if [ "$src_mtime" -le "$tgt_mtime" ]; then
-      continue
-    fi
-  fi
-
-  # Remove stale link or outdated directory, then copy
-  rm -rf "$target"
-  cp -R "$skill_dir" "$target"
-done
+if [ -x "$SYNC_SCRIPT" ]; then
+  SKILLS_SOURCE_OVERRIDE="${REPO_ROOT}/skills" exec "$SYNC_SCRIPT"
+else
+  # Fallback: run inline if sync script doesn't exist yet
+  echo "Warning: sync-skills.sh not found, skipping skill sync" >&2
+fi
