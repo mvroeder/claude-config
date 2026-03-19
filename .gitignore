@@ -9,6 +9,8 @@
 !commands/**
 !skills/
 !skills/**
+!scripts/
+!scripts/**
 !.claude/
 !.claude/**
 
