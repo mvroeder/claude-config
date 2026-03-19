@@ -9,6 +9,8 @@
 !commands/**
 !skills/
 !skills/**
+!.claude/
+!.claude/**
 
 # Innerhalb von Skills ignorieren
 **/__pycache__/
