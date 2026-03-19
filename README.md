@@ -11,16 +11,23 @@ Claude Code supports user-defined **skills** (reusable prompt-based capabilities
 3. **Works across machines** — clone the repo, run `install.sh` once, done.
 
 ```
-┌─────────────────────────────────────────────────────┐
-│  claude-config repo (~/dev/claude-config)           │
-│                                                     │
-│  skills/           scripts/          .claude/       │
-│  ├── last30days/   ├── install.sh    └── hooks/     │
-│  ├── yt-summarize/ └── sync-skills.sh    └── ...    │
-│  └── meta-skill-creator/                            │
-└──────────────┬──────────────────────────────────────┘
-               │  SessionStart hook
-               │  (git pull + copy)
+┌─────────────────────────────────────────────────────────┐
+│  claude-config repo (~/dev/claude-config)               │
+│                                                         │
+│  skills/           scripts/           hooks/            │
+│  ├── last30days/   ├── install.sh     └── global-       │
+│  ├── yt-summarize/ └── sync-skills.sh     session-      │
+│  └── meta-skill-creator/                  start.sh      │
+└──────────────┬──────────────────────────────────────────┘
+               │ install.sh (once per machine)
+               ▼
+┌──────────────────────────────────┐
+│  ~/.claude/                      │
+│  ├── hooks/session-start.sh      │  ← stable entry point
+│  └── settings.json               │    (SessionStart hook)
+└──────────────┬───────────────────┘
+               │ every session start
+               │ (prerequisite checks + git pull + copy)
                ▼
 ┌──────────────────────────┐
 │  ~/.claude/skills/       │  ← Claude Code reads
@@ -53,14 +60,23 @@ source ~/.zshrc
 $CLAUDE_CONFIG_REPO/scripts/install.sh
 ```
 
-The install script registers a **user-level SessionStart hook** in `~/.claude/settings.json`. From now on, every Claude Code session automatically pulls the latest changes and copies skills to `~/.claude/skills/`.
+The install script:
+1. Copies `hooks/global-session-start.sh` to `~/.claude/hooks/session-start.sh`
+2. Registers a **user-level SessionStart hook** in `~/.claude/settings.json`
+
+From now on, every Claude Code session automatically pulls the latest changes and copies skills to `~/.claude/skills/`.
 
 ### What Happens on Every Session Start
 
-1. `sync-skills.sh` runs automatically.
-2. It does a quick `git pull --ff-only` (timeout 10s, fails silently if offline).
-3. Each skill directory is compared by timestamp — only changed skills are copied.
-4. Skills are available immediately via `/skill-name` in Claude Code.
+1. `~/.claude/hooks/session-start.sh` runs automatically.
+2. It **checks prerequisites** and aborts with a clear error if something is missing:
+   - `CLAUDE_CONFIG_REPO` env var must be set
+   - The repo directory must exist
+   - `sync-skills.sh` must be executable
+3. It warns (non-fatal) if `~/.claude/CLAUDE.md` or `~/.claude/skills/` are missing.
+4. It delegates to `sync-skills.sh`, which does a quick `git pull --ff-only` (timeout 10s, fails silently if offline).
+5. Each skill directory is compared by timestamp — only changed skills are copied.
+6. Skills are available immediately via `/skill-name` in Claude Code.
 
 ## Skills
 
@@ -129,8 +145,11 @@ claude-config/
 ├── README.md                        # This file
 ├── .gitignore                       # Reverse-ignore: only whitelist what should be tracked
 │
+├── hooks/
+│   └── global-session-start.sh      # Global hook source — installed by install.sh
+│
 ├── scripts/
-│   ├── install.sh                   # One-time setup: register user-level hook
+│   ├── install.sh                   # One-time setup: install hook + register in settings.json
 │   └── sync-skills.sh               # Sync skills from repo to ~/.claude/skills/
 │
 ├── skills/
@@ -178,7 +197,9 @@ claude-config/
 
 **Reverse-ignore `.gitignore`.** The gitignore blocks everything by default and explicitly whitelists tracked directories. This prevents secrets, caches, audio files, and other artifacts from being accidentally committed.
 
-**Two-layer hooks.** A *project-level* hook (`.claude/hooks/session-start.sh`) handles syncing during development inside the repo. A *user-level* hook (registered by `install.sh`) handles syncing from any other project.
+**Stable hook entry point.** The SessionStart hook is installed to `~/.claude/hooks/session-start.sh` — a path that relies only on `$HOME`, which is always available. The old approach referenced `$CLAUDE_CONFIG_REPO` directly in `settings.json`, which caused a silent failure if the env var wasn't set. The hook now fails loudly with actionable error messages instead.
+
+**Two-layer hooks.** A *project-level* hook (`.claude/hooks/session-start.sh`) handles syncing during development inside the repo itself. A *user-level* hook (`~/.claude/hooks/session-start.sh`, installed by `install.sh`) handles syncing from any other project.
 
 **Smart copy, not symlinks.** `sync-skills.sh` copies skill directories instead of symlinking. This avoids issues with Claude Code's file resolution and allows timestamp-based change detection to skip unchanged skills.
 
