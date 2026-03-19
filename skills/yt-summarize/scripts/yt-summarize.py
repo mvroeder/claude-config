@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Transcribe and summarize YouTube videos using yt-dlp + Claude API.
 
-Hybrid transcription: tries YouTube subtitles first, falls back to Whisper.
+Hybrid transcription: tries YouTube subtitles first, then offers interactive
+choice between local Whisper, OpenAI Whisper API, or GPT-4o-Transcribe.
 """
 
 import argparse
@@ -16,6 +17,18 @@ try:
     import anthropic
 except ImportError:
     anthropic = None
+
+try:
+    import openai as openai_mod
+except ImportError:
+    openai_mod = None
+
+
+ENGINES = {
+    "whisper": "Whisper (local)",
+    "whisper-api": "OpenAI Whisper API (~$0.006/min)",
+    "gpt4o-transcribe": "GPT-4o Transcribe (~$0.006/min, best quality)",
+}
 
 
 def extract_video_id(url: str) -> str:
@@ -69,38 +82,40 @@ def fetch_transcript_subtitles(url: str, languages: list[str]) -> str | None:
         return vtt_to_plain_text(vtt_path)
 
 
+def download_audio(url: str, tmpdir: str) -> str:
+    """Download audio via yt-dlp and return the file path."""
+    audio_path = os.path.join(tmpdir, "audio")
+    cmd = [
+        "yt-dlp",
+        "-x",
+        "--audio-format",
+        "mp3",
+        "-o",
+        audio_path + ".%(ext)s",
+        url,
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"yt-dlp audio download failed: {result.stderr.strip() or 'unknown error'}"
+        )
+
+    audio_files = [f for f in os.listdir(tmpdir) if f.startswith("audio")]
+    if not audio_files:
+        raise FileNotFoundError("Audio download produced no output file.")
+    return os.path.join(tmpdir, audio_files[0])
+
+
 def fetch_transcript_whisper(url: str) -> str:
-    """Download audio via yt-dlp and transcribe with Whisper."""
+    """Download audio via yt-dlp and transcribe with local Whisper."""
     if not shutil.which("whisper"):
         raise RuntimeError(
             "whisper not found. Install with: uv pip install openai-whisper"
         )
 
     with tempfile.TemporaryDirectory() as tmpdir:
-        audio_path = os.path.join(tmpdir, "audio")
-        # Download audio only
-        cmd = [
-            "yt-dlp",
-            "-x",
-            "--audio-format",
-            "mp3",
-            "-o",
-            audio_path + ".%(ext)s",
-            url,
-        ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"yt-dlp audio download failed: {result.stderr.strip() or 'unknown error'}"
-            )
+        audio_file = download_audio(url, tmpdir)
 
-        # Find the downloaded audio file
-        audio_files = [f for f in os.listdir(tmpdir) if f.startswith("audio")]
-        if not audio_files:
-            raise FileNotFoundError("Audio download produced no output file.")
-        audio_file = os.path.join(tmpdir, audio_files[0])
-
-        # Transcribe with Whisper
         print("Transcribing with Whisper (this may take a while)...")
         result = subprocess.run(
             [
@@ -121,7 +136,6 @@ def fetch_transcript_whisper(url: str) -> str:
                 f"Whisper failed: {result.stderr.strip() or 'unknown error'}"
             )
 
-        # Read the transcript
         txt_files = [f for f in os.listdir(tmpdir) if f.endswith(".txt")]
         if not txt_files:
             raise FileNotFoundError("Whisper produced no transcript output.")
@@ -129,6 +143,35 @@ def fetch_transcript_whisper(url: str) -> str:
         txt_path = os.path.join(tmpdir, txt_files[0])
         with open(txt_path, encoding="utf-8") as f:
             return f.read().strip()
+
+
+def fetch_transcript_openai_api(url: str, model: str = "whisper-1") -> str:
+    """Download audio and transcribe via OpenAI API (Whisper API or GPT-4o-Transcribe)."""
+    if openai_mod is None:
+        print("Missing dependency: openai")
+        print("Install with: uv pip install openai")
+        sys.exit(1)
+
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("Error: OPENAI_API_KEY not set.")
+        print("Export it or add to .env: export OPENAI_API_KEY=sk-...")
+        sys.exit(1)
+
+    client = openai_mod.OpenAI()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        audio_file = download_audio(url, tmpdir)
+
+        print(f"Transcribing with {model} API...")
+        with open(audio_file, "rb") as af:
+            response = client.audio.transcriptions.create(
+                model=model,
+                file=af,
+                response_format="text",
+            )
+
+        # response is a string when response_format="text"
+        return response.strip() if isinstance(response, str) else response.text.strip()
 
 
 def vtt_to_plain_text(path: str) -> str:
@@ -156,6 +199,63 @@ def vtt_to_plain_text(path: str) -> str:
             text_lines.append(line)
 
     return " ".join(text_lines)
+
+
+def get_available_engines() -> dict[str, str]:
+    """Return dict of engine_key -> description for currently available engines."""
+    available = {}
+
+    if shutil.which("whisper"):
+        available["whisper"] = ENGINES["whisper"]
+
+    if openai_mod is not None and os.environ.get("OPENAI_API_KEY"):
+        available["whisper-api"] = ENGINES["whisper-api"]
+        available["gpt4o-transcribe"] = ENGINES["gpt4o-transcribe"]
+
+    return available
+
+
+def prompt_engine_choice(available: dict[str, str]) -> str:
+    """Interactively ask the user which transcription engine to use."""
+    if not available:
+        print("Error: No transcription engine available.")
+        print("Options:")
+        print("  - Install local Whisper: uv pip install openai-whisper")
+        print("  - Set OPENAI_API_KEY for API transcription: uv pip install openai")
+        sys.exit(1)
+
+    if len(available) == 1:
+        key = next(iter(available))
+        print(f"Using {available[key]} (only available engine).")
+        return key
+
+    print("\nNo subtitles found. Choose a transcription engine:\n")
+    keys = list(available.keys())
+    for i, key in enumerate(keys, 1):
+        print(f"  [{i}] {available[key]}")
+    print()
+
+    while True:
+        try:
+            choice = input(f"Enter choice (1-{len(keys)}): ").strip()
+            idx = int(choice) - 1
+            if 0 <= idx < len(keys):
+                return keys[idx]
+        except (ValueError, EOFError):
+            pass
+        print(f"Please enter a number between 1 and {len(keys)}.")
+
+
+def transcribe_with_engine(url: str, engine: str) -> str:
+    """Transcribe using the specified engine."""
+    if engine == "whisper":
+        return fetch_transcript_whisper(url)
+    elif engine == "whisper-api":
+        return fetch_transcript_openai_api(url, model="whisper-1")
+    elif engine == "gpt4o-transcribe":
+        return fetch_transcript_openai_api(url, model="gpt-4o-transcribe")
+    else:
+        raise ValueError(f"Unknown engine: {engine}")
 
 
 def summarize(transcript: str, title: str, language: str, model: str) -> str:
@@ -212,11 +312,22 @@ def main():
         help="Only output the transcript, skip summarization",
     )
     parser.add_argument(
+        "--engine",
+        choices=["auto", "whisper", "whisper-api", "gpt4o-transcribe"],
+        default="auto",
+        help="Transcription engine (default: auto — subtitles first, then interactive choice)",
+    )
+    # Keep --whisper as shortcut for backwards compatibility
+    parser.add_argument(
         "--whisper",
         action="store_true",
-        help="Force Whisper transcription instead of YouTube subtitles",
+        help="Shortcut for --engine whisper",
     )
     args = parser.parse_args()
+
+    # --whisper flag overrides --engine
+    if args.whisper:
+        args.engine = "whisper"
 
     # Check yt-dlp is installed
     if not shutil.which("yt-dlp"):
@@ -235,29 +346,27 @@ def main():
     title = get_video_title(args.url)
     print(f"Title: {title}\n")
 
-    # Hybrid transcription: subtitles first, Whisper as fallback
+    # Transcription logic
     transcript = None
-    if args.whisper:
-        print("Transcribing with Whisper (forced)...")
-        transcript = fetch_transcript_whisper(args.url)
-        print(f"Transcript (Whisper): {len(transcript)} characters\n")
+
+    if args.engine != "auto":
+        # Specific engine requested
+        engine_name = ENGINES.get(args.engine, args.engine)
+        print(f"Transcribing with {engine_name}...")
+        transcript = transcribe_with_engine(args.url, args.engine)
+        print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
     else:
+        # Auto mode: try subtitles first, then interactive fallback
         print(f"Extracting subtitles ({', '.join(languages)})...")
         transcript = fetch_transcript_subtitles(args.url, languages)
         if transcript:
             print(f"Transcript (subtitles): {len(transcript)} characters\n")
         else:
-            print("No subtitles found.")
-            if shutil.which("whisper"):
-                print("Falling back to Whisper transcription...\n")
-                transcript = fetch_transcript_whisper(args.url)
-                print(f"Transcript (Whisper): {len(transcript)} characters\n")
-            else:
-                print(
-                    "Error: No subtitles available and Whisper is not installed."
-                )
-                print("Install Whisper with: uv pip install openai-whisper")
-                sys.exit(1)
+            available = get_available_engines()
+            engine = prompt_engine_choice(available)
+            transcript = transcribe_with_engine(args.url, engine)
+            engine_name = ENGINES.get(engine, engine)
+            print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
 
     if args.transcript_only:
         print(transcript)
