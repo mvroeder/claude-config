@@ -4,6 +4,7 @@
 # === Nur diese Dateien/Ordner syncen ===
 !.gitignore
 !CLAUDE.md
+!README.md
 !settings.json
 !commands/
 !commands/**
