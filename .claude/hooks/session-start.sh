@@ -1,12 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
-# Only run in remote/cloud environments
-if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
-  exit 0
+# Determine skills source directory
+# Remote: use project dir; Local: use the repo where this hook lives
+if [ "${CLAUDE_CODE_REMOTE:-}" = "true" ]; then
+  SKILLS_SOURCE="${CLAUDE_PROJECT_DIR}/skills"
+else
+  SKILLS_SOURCE="$(cd "$(dirname "$0")/../.." && pwd)/skills"
 fi
-
-SKILLS_SOURCE="${CLAUDE_PROJECT_DIR}/skills"
 SKILLS_TARGET="${HOME}/.claude/skills"
 
 mkdir -p "$SKILLS_TARGET"
