@@ -256,14 +256,9 @@ The global `CLAUDE.md` (managed in this repo, synced to `~/.claude/CLAUDE.md`) c
 
 ### Project Templates
 
-For new projects, copy the appropriate template to your project root as `CLAUDE.md`:
+The `init-project.sh` script automatically selects and copies the right template based on your project type (see [Starting a New Project](#starting-a-new-project)). Two templates are available:
 
-```bash
-# For coding / architecture projects
-cp "$CLAUDE_CONFIG_REPO/templates/CLAUDE-coding.md" ~/dev/my-project/CLAUDE.md
+- **`templates/CLAUDE-coding.md`** — Tech stack, architecture, conventions, APIs, testing
+- **`templates/CLAUDE-writing.md`** — Target audience, tonality, document types, formatting
 
-# For writing projects (PRDs, whitepapers, docs)
-cp "$CLAUDE_CONFIG_REPO/templates/CLAUDE-writing.md" ~/dev/my-project/CLAUDE.md
-```
-
-Then fill in the placeholder sections. The global preferences still apply — the project CLAUDE.md adds project-specific context on top.
+The global preferences still apply — the project CLAUDE.md adds project-specific context on top.
