@@ -12,6 +12,8 @@
 !skills/**
 !scripts/
 !scripts/**
+!hooks/
+!hooks/**
 !.claude/
 !.claude/**
 

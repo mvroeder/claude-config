@@ -6,13 +6,20 @@ set -euo pipefail
 #
 # What it does:
 #   1. Checks that CLAUDE_CONFIG_REPO is set and valid
-#   2. Adds a user-level SessionStart hook to ~/.claude/settings.json
-#   3. Runs an initial skill sync
+#   2. Installs hooks/global-session-start.sh to ~/.claude/hooks/session-start.sh
+#   3. Adds a user-level SessionStart hook to ~/.claude/settings.json
+#   4. Runs an initial skill sync
 
 SETTINGS_FILE="${HOME}/.claude/settings.json"
+HOOK_INSTALL_DIR="${HOME}/.claude/hooks"
+HOOK_INSTALL_PATH="${HOOK_INSTALL_DIR}/session-start.sh"
+HOOK_SOURCE="${CLAUDE_CONFIG_REPO:-}/hooks/global-session-start.sh"
 SYNC_SCRIPT="${CLAUDE_CONFIG_REPO:-}/scripts/sync-skills.sh"
 
-# ── Pre-flight checks ──
+# Hook command uses $HOME so it works across machines without absolute paths
+HOOK_CMD="\$HOME/.claude/hooks/session-start.sh"
+
+# ── Pre-flight checks ──────────────────────────────────────────────────────────
 if [ -z "${CLAUDE_CONFIG_REPO:-}" ]; then
   echo "ERROR: CLAUDE_CONFIG_REPO is not set."
   echo ""
@@ -31,26 +38,48 @@ if [ ! -d "$CLAUDE_CONFIG_REPO" ]; then
 fi
 
 if [ ! -x "$SYNC_SCRIPT" ]; then
-  echo "ERROR: Sync script not found: $SYNC_SCRIPT"
+  echo "ERROR: Sync script not found or not executable: $SYNC_SCRIPT"
   exit 1
 fi
 
-# ── Ensure ~/.claude/ exists ──
+if [ ! -f "$HOOK_SOURCE" ]; then
+  echo "ERROR: Hook source not found: $HOOK_SOURCE"
+  exit 1
+fi
+
+# ── Install hook script to ~/.claude/hooks/ ───────────────────────────────────
+mkdir -p "$HOOK_INSTALL_DIR"
+cp "$HOOK_SOURCE" "$HOOK_INSTALL_PATH"
+chmod +x "$HOOK_INSTALL_PATH"
+echo "Installed hook: $HOOK_INSTALL_PATH"
+
+# ── Ensure ~/.claude/ exists ──────────────────────────────────────────────────
 mkdir -p "$(dirname "$SETTINGS_FILE")"
 
-# ── Hook command (uses env var so no absolute paths in config) ──
-HOOK_CMD="\$CLAUDE_CONFIG_REPO/scripts/sync-skills.sh"
-
-# ── Merge hook into user-level settings.json ──
+# ── Merge hook into user-level settings.json ─────────────────────────────────
 if [ -f "$SETTINGS_FILE" ]; then
-  # Check if hook is already registered
-  if grep -q "sync-skills.sh" "$SETTINGS_FILE" 2>/dev/null; then
+  # Check if hook is already registered (either old or new path)
+  if grep -q "session-start.sh\|sync-skills.sh" "$SETTINGS_FILE" 2>/dev/null; then
     echo "Hook already registered in $SETTINGS_FILE"
+    # Update old hook command to new path if needed
+    if grep -q "sync-skills.sh" "$SETTINGS_FILE" 2>/dev/null; then
+      if command -v jq >/dev/null 2>&1; then
+        TMP="$(mktemp)"
+        jq --arg old "\$CLAUDE_CONFIG_REPO/scripts/sync-skills.sh" \
+           --arg new "$HOOK_CMD" '
+          walk(if type == "string" and . == $old then $new else . end)
+        ' "$SETTINGS_FILE" > "$TMP" && mv "$TMP" "$SETTINGS_FILE"
+        echo "Updated hook command to new stable path."
+      else
+        echo "WARNING: jq not installed. Please update the hook command manually in $SETTINGS_FILE"
+        echo "  Old: \$CLAUDE_CONFIG_REPO/scripts/sync-skills.sh"
+        echo "  New: $HOOK_CMD"
+      fi
+    fi
   else
     # Merge: add SessionStart hook to existing settings
-    # Use a temp file for safe in-place update
-    TMP="$(mktemp)"
     if command -v jq >/dev/null 2>&1; then
+      TMP="$(mktemp)"
       jq --arg cmd "$HOOK_CMD" '
         .hooks //= {} |
         .hooks.SessionStart //= [] |
@@ -63,7 +92,6 @@ if [ -f "$SETTINGS_FILE" ]; then
       echo "Add this to $SETTINGS_FILE under \"hooks\".\"SessionStart\":"
       echo ""
       echo "  {\"hooks\": [{\"type\": \"command\", \"command\": \"$HOOK_CMD\"}]}"
-      rm -f "$TMP"
       exit 1
     fi
   fi
@@ -77,7 +105,7 @@ else
         "hooks": [
           {
             "type": "command",
-            "command": "$HOOK_CMD"
+            "command": "${HOOK_CMD}"
           }
         ]
       }
@@ -88,7 +116,7 @@ EOF
   echo "Created $SETTINGS_FILE with SessionStart hook."
 fi
 
-# ── Initial sync ──
+# ── Initial sync ──────────────────────────────────────────────────────────────
 echo ""
 echo "Running initial skill sync..."
 "$SYNC_SCRIPT"
