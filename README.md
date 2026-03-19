@@ -153,6 +153,7 @@ claude-config/
 │   └── CLAUDE-writing.md            # Project template: PRDs, whitepapers, docs
 │
 ├── scripts/
+│   ├── init-project.sh              # Interactive setup for new projects
 │   ├── install.sh                   # One-time setup: install hook + register in settings.json
 │   └── sync-skills.sh               # Sync skills from repo to ~/.claude/skills/
 │
@@ -194,6 +195,31 @@ claude-config/
    ```
 
 3. Next Claude Code session on any machine picks it up automatically.
+
+## Starting a New Project
+
+Use the interactive init script to set up a new project with everything Claude Code needs:
+
+```bash
+$CLAUDE_CONFIG_REPO/scripts/init-project.sh
+# or with path:
+$CLAUDE_CONFIG_REPO/scripts/init-project.sh ~/dev/my-new-project
+```
+
+The script walks you through:
+
+1. **Project path & name**
+2. **Project type** — Coding, Writing, or both (selects the right CLAUDE.md template)
+3. **GitHub visibility** — private or public
+4. **Description** — for the GitHub repo
+
+It then creates:
+- Git repo with initial commit
+- `CLAUDE.md` from the matching template (with project name pre-filled)
+- `.gitignore` with sensible defaults (.env, node_modules, __pycache__, etc.)
+- `.env.example` as a placeholder for secrets
+- `README.md` with project name and description
+- GitHub repository (via `gh`) with push
 
 ## Design Decisions
 
