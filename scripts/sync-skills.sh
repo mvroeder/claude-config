@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# ── Sync skills from claude-config repo to ~/.claude/skills/ ──
+# ── Sync skills and CLAUDE.md from claude-config repo to ~/.claude/ ──
 # Called by:
 #   1. User-level SessionStart hook (any project, uses $CLAUDE_CONFIG_REPO)
 #   2. Project-level session-start.sh (inside the repo itself)
@@ -10,6 +10,7 @@ set -euo pipefail
 #       SKILLS_SOURCE_OVERRIDE – if set, skip git pull and use this path
 
 SKILLS_TARGET="${HOME}/.claude/skills"
+CLAUDE_MD_TARGET="${HOME}/.claude/CLAUDE.md"
 
 # ── Determine source ──
 if [ -n "${SKILLS_SOURCE_OVERRIDE:-}" ]; then
@@ -26,6 +27,27 @@ elif [ -n "${CLAUDE_CONFIG_REPO:-}" ] && [ -d "${CLAUDE_CONFIG_REPO}" ]; then
 else
   # No repo configured — nothing to do
   exit 0
+fi
+
+# ── Determine repo root for CLAUDE.md sync ──
+if [ -n "${SKILLS_SOURCE_OVERRIDE:-}" ]; then
+  REPO_ROOT="$(cd "$SKILLS_SOURCE_OVERRIDE/.." && pwd)"
+else
+  REPO_ROOT="${CLAUDE_CONFIG_REPO}"
+fi
+
+# ── Sync CLAUDE.md (only if source is newer) ──
+CLAUDE_MD_SOURCE="${REPO_ROOT}/CLAUDE.md"
+if [ -f "$CLAUDE_MD_SOURCE" ]; then
+  if [ ! -f "$CLAUDE_MD_TARGET" ]; then
+    cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
+  else
+    src_mtime="$(stat -c %Y "$CLAUDE_MD_SOURCE" 2>/dev/null || stat -f %m "$CLAUDE_MD_SOURCE")"
+    tgt_mtime="$(stat -c %Y "$CLAUDE_MD_TARGET" 2>/dev/null || stat -f %m "$CLAUDE_MD_TARGET")"
+    if [ "$src_mtime" -gt "$tgt_mtime" ]; then
+      cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
+    fi
+  fi
 fi
 
 [ -d "$SKILLS_SOURCE" ] || exit 0

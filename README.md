@@ -141,12 +141,16 @@ Includes an interactive interview to determine trigger mode, required tools, and
 
 ```
 claude-config/
-├── CLAUDE.md                        # Working preferences for Claude Code
+├── CLAUDE.md                        # Global preferences (synced to ~/.claude/CLAUDE.md)
 ├── README.md                        # This file
 ├── .gitignore                       # Reverse-ignore: only whitelist what should be tracked
 │
 ├── hooks/
 │   └── global-session-start.sh      # Global hook source — installed by install.sh
+│
+├── templates/
+│   ├── CLAUDE-coding.md             # Project template: coding & architecture
+│   └── CLAUDE-writing.md            # Project template: PRDs, whitepapers, docs
 │
 ├── scripts/
 │   ├── install.sh                   # One-time setup: install hook + register in settings.json
@@ -205,13 +209,35 @@ claude-config/
 
 **Self-evolution pattern.** Every skill includes an `IMPROVEMENTS.md` file. Claude logs observations and suggestions there during use — but never modifies `SKILL.md` directly. The user reviews and promotes improvements when ready.
 
-## Working Preferences (CLAUDE.md)
+## CLAUDE.md Hierarchy
 
-The `CLAUDE.md` file configures how Claude Code behaves inside this repository:
+Claude Code loads **all** CLAUDE.md files it finds and merges them additively:
+
+| Level | Path | Scope |
+|---|---|---|
+| Global | `~/.claude/CLAUDE.md` | Every session, every project |
+| Project | `<project>/CLAUDE.md` | Only in that project |
+| Project (.claude) | `<project>/.claude/CLAUDE.md` | Only in that project |
+
+### Global Preferences (always active)
+
+The global `CLAUDE.md` (managed in this repo, synced to `~/.claude/CLAUDE.md`) contains only universally applicable rules:
 
 - **Responses** in German, **code/commits** in English
-- **Conventional Commits** (`feat:`, `fix:`, `refactor:`, `chore:`)
-- **Small commits** — one logical step per commit
+- **Conventional Commits** and small commits
 - **Secrets** go in `.env`, never committed
-- **Python** via `uv` (not pip/poetry)
 - Ask for clarification instead of making assumptions
+
+### Project Templates
+
+For new projects, copy the appropriate template to your project root as `CLAUDE.md`:
+
+```bash
+# For coding / architecture projects
+cp "$CLAUDE_CONFIG_REPO/templates/CLAUDE-coding.md" ~/dev/my-project/CLAUDE.md
+
+# For writing projects (PRDs, whitepapers, docs)
+cp "$CLAUDE_CONFIG_REPO/templates/CLAUDE-writing.md" ~/dev/my-project/CLAUDE.md
+```
+
+Then fill in the placeholder sections. The global preferences still apply — the project CLAUDE.md adds project-specific context on top.

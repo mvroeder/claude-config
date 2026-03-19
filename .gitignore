@@ -14,6 +14,8 @@
 !scripts/**
 !hooks/
 !hooks/**
+!templates/
+!templates/**
 !.claude/
 !.claude/**
 
