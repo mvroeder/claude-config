@@ -3,67 +3,61 @@
 # Installed to ~/.claude/hooks/session-start.sh by scripts/install.sh.
 # Entry point for every Claude Code session on this machine.
 #
-# Checks all prerequisites loudly so missing setup is caught immediately,
-# then delegates to sync-skills.sh.
+# Works in two modes:
+#   1. Local: uses $CLAUDE_CONFIG_REPO (set in shell profile)
+#   2. Cloud: auto-clones the repo to ~/.claude/claude-config/ as fallback
+#
+# Checks prerequisites, then delegates to sync-skills.sh.
 
 set -euo pipefail
 
-ERRORS=()
+GITHUB_REPO="https://github.com/mvroeder/claude-config.git"
+CLOUD_CLONE_DIR="${HOME}/.claude/claude-config"
+
 WARNINGS=()
 
-# ── 1. CLAUDE_CONFIG_REPO must be set ────────────────────────────────────────
-if [ -z "${CLAUDE_CONFIG_REPO:-}" ]; then
-  ERRORS+=("CLAUDE_CONFIG_REPO is not set. Add this to your ~/.zshrc (or ~/.bashrc):")
-  ERRORS+=("  export CLAUDE_CONFIG_REPO=\"\$HOME/dev/claude-config\"")
-fi
-
-# ── 2. Repo directory must exist ─────────────────────────────────────────────
-if [ -n "${CLAUDE_CONFIG_REPO:-}" ] && [ ! -d "${CLAUDE_CONFIG_REPO}" ]; then
-  ERRORS+=("CLAUDE_CONFIG_REPO points to a non-existent directory: ${CLAUDE_CONFIG_REPO}")
-fi
-
-# ── 3. Sync script must exist and be executable ───────────────────────────────
-SYNC_SCRIPT="${CLAUDE_CONFIG_REPO:-}/scripts/sync-skills.sh"
-if [ -n "${CLAUDE_CONFIG_REPO:-}" ] && [ -d "${CLAUDE_CONFIG_REPO}" ] && [ ! -x "${SYNC_SCRIPT}" ]; then
-  ERRORS+=("Sync script not found or not executable: ${SYNC_SCRIPT}")
-fi
-
-# ── 4. Global CLAUDE.md must exist ────────────────────────────────────────────
-if [ ! -f "${HOME}/.claude/CLAUDE.md" ]; then
-  WARNINGS+=("~/.claude/CLAUDE.md not found — global instructions are missing.")
-  if [ -n "${CLAUDE_CONFIG_REPO:-}" ]; then
-    WARNINGS+=("  Fix: cp \"${CLAUDE_CONFIG_REPO}/CLAUDE.md\" ~/.claude/CLAUDE.md")
+# ── 1. Resolve CLAUDE_CONFIG_REPO ────────────────────────────────────────────
+if [ -z "${CLAUDE_CONFIG_REPO:-}" ] || [ ! -d "${CLAUDE_CONFIG_REPO}" ]; then
+  # Fallback for cloud sessions: auto-clone if not available
+  if [ -d "$CLOUD_CLONE_DIR/.git" ]; then
+    # Already cloned — pull latest (fail silently if offline)
+    timeout 10 git -C "$CLOUD_CLONE_DIR" pull --ff-only --quiet 2>/dev/null || true
+  else
+    # Clone fresh (shallow for speed)
+    if timeout 30 git clone --depth 1 --quiet "$GITHUB_REPO" "$CLOUD_CLONE_DIR" 2>/dev/null; then
+      echo "claude-config: auto-cloned to $CLOUD_CLONE_DIR" >&2
+    else
+      echo "claude-config: could not clone $GITHUB_REPO — skills unavailable" >&2
+      exit 0
+    fi
   fi
+  CLAUDE_CONFIG_REPO="$CLOUD_CLONE_DIR"
 fi
 
-# ── 5. Skills directory must exist and not be empty ───────────────────────────
+# ── 2. Sync script must exist and be executable ──────────────────────────────
+SYNC_SCRIPT="${CLAUDE_CONFIG_REPO}/scripts/sync-skills.sh"
+if [ ! -x "${SYNC_SCRIPT}" ]; then
+  echo "claude-config: sync script not found or not executable: ${SYNC_SCRIPT}" >&2
+  exit 0
+fi
+
+# ── 3. Global CLAUDE.md check (non-fatal) ────────────────────────────────────
+if [ ! -f "${HOME}/.claude/CLAUDE.md" ]; then
+  WARNINGS+=("~/.claude/CLAUDE.md not found — will be synced now.")
+fi
+
+# ── 4. Skills directory check (non-fatal) ────────────────────────────────────
 SKILLS_DIR="${HOME}/.claude/skills"
 if [ ! -d "${SKILLS_DIR}" ] || [ -z "$(ls -A "${SKILLS_DIR}" 2>/dev/null)" ]; then
-  WARNINGS+=("~/.claude/skills/ is missing or empty — skills have not been synced yet.")
+  WARNINGS+=("~/.claude/skills/ is missing or empty — will be synced now.")
 fi
 
-# ── Print errors and abort ────────────────────────────────────────────────────
-if [ ${#ERRORS[@]} -gt 0 ]; then
-  echo "" >&2
-  echo "╔══════════════════════════════════════════════════════════════╗" >&2
-  echo "║  Claude Code setup is incomplete — session may not work!    ║" >&2
-  echo "╚══════════════════════════════════════════════════════════════╝" >&2
-  for msg in "${ERRORS[@]}"; do
-    echo "  ✗ ${msg}" >&2
-  done
-  echo "" >&2
-  exit 1
-fi
-
-# ── Print warnings (non-fatal) ────────────────────────────────────────────────
+# ── Print warnings (non-fatal) ──────────────────────────────────────────────
 if [ ${#WARNINGS[@]} -gt 0 ]; then
-  echo "" >&2
-  echo "⚠  Claude Code: setup warnings" >&2
   for msg in "${WARNINGS[@]}"; do
-    echo "  ${msg}" >&2
+    echo "claude-config: ${msg}" >&2
   done
-  echo "" >&2
 fi
 
-# ── Delegate to sync-skills.sh ───────────────────────────────────────────────
+# ── Delegate to sync-skills.sh ──────────────────────────────────────────────
 exec "${SYNC_SCRIPT}"
