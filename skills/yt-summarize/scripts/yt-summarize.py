@@ -4,7 +4,8 @@
 Hybrid transcription: tries YouTube subtitles first, then offers interactive
 choice between local Whisper, OpenAI Whisper API, or GPT-4o-Transcribe.
 
-Supports multiple summary modes: kurz (default), standard, learn.
+Supports multiple summary modes: kurz, standard (default), learn.
+Supports playlist URLs — processes all videos sequentially.
 """
 
 import argparse
@@ -56,6 +57,7 @@ SUBPROCESS_TIMEOUT_SUBTITLE = 120
 SUBPROCESS_TIMEOUT_DOWNLOAD = 300
 SUBPROCESS_TIMEOUT_WHISPER = 600
 SUBPROCESS_TIMEOUT_TITLE = 30
+SUBPROCESS_TIMEOUT_PLAYLIST = 60
 
 ENGINES = {
     "whisper": "Whisper (local)",
@@ -153,6 +155,51 @@ def extract_video_id(url: str) -> str:
         if match:
             return match.group(1)
     raise ValueError(f"Could not extract video ID from: {url}")
+
+
+def is_playlist_url(url: str) -> bool:
+    """Check if the URL points to a YouTube playlist."""
+    return "list=" in url or "/playlist?" in url
+
+
+def extract_playlist_videos(url: str) -> list[dict[str, str]]:
+    """Extract video URLs and titles from a YouTube playlist using yt-dlp.
+
+    Returns a list of dicts with 'url', 'title', and 'id' keys.
+    """
+    cmd = [
+        "yt-dlp",
+        "--flat-playlist",
+        "--print", "%(id)s\t%(title)s",
+        "--no-warnings",
+        url,
+    ]
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, timeout=SUBPROCESS_TIMEOUT_PLAYLIST
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"Failed to extract playlist: {result.stderr.strip() or 'unknown error'}"
+        )
+
+    videos = []
+    for line in result.stdout.strip().splitlines():
+        if not line.strip():
+            continue
+        parts = line.split("\t", 1)
+        video_id = parts[0].strip()
+        title = parts[1].strip() if len(parts) > 1 else "Unknown Title"
+        if video_id and len(video_id) == 11:
+            videos.append({
+                "id": video_id,
+                "url": f"https://www.youtube.com/watch?v={video_id}",
+                "title": title,
+            })
+
+    if not videos:
+        raise RuntimeError("Playlist contains no videos or could not be parsed.")
+
+    return videos
 
 
 def get_video_title(url: str) -> str:
@@ -539,11 +586,129 @@ def save_learnings(
     return json_path, md_path
 
 
+def _resolve_knowledge_dir(args) -> str:
+    """Determine the knowledge base directory from args or env."""
+    if args.knowledge_dir:
+        return args.knowledge_dir
+    config_repo = os.environ.get("CLAUDE_CONFIG_REPO")
+    if config_repo:
+        return os.path.join(config_repo, "knowledge")
+    return os.path.expanduser("~/.claude/knowledge")
+
+
+def _transcribe_video(url: str, engine: str, languages: list[str]) -> str:
+    """Transcribe a single video, handling engine selection."""
+    if engine != "auto":
+        engine_name = ENGINES.get(engine, engine)
+        print(f"Transcribing with {engine_name}...")
+        transcript = transcribe_with_engine(url, engine)
+        print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
+        return transcript
+
+    print(f"Extracting subtitles ({', '.join(languages)})...")
+    transcript = fetch_transcript_subtitles(url, languages)
+    if transcript:
+        print(f"Transcript (subtitles): {len(transcript)} characters\n")
+        return transcript
+
+    available = get_available_engines()
+    engine = prompt_engine_choice(available)
+    transcript = transcribe_with_engine(url, engine)
+    engine_name = ENGINES.get(engine, engine)
+    print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
+    return transcript
+
+
+def _summarize_and_output(
+    transcript: str, title: str, url: str, args, interests: str | None, skills_list: str | None
+) -> None:
+    """Summarize transcript and output results (shared by single/playlist mode)."""
+    print(f"Summarizing with {args.model} (mode: {args.mode})...")
+    summary = summarize(
+        transcript, title, args.summary_lang, args.model,
+        mode=args.mode, interests=interests, skills_list=skills_list,
+    )
+    print(f"\n{'=' * 60}")
+    print(f"  {title}")
+    print(f"{'=' * 60}\n")
+    print(summary)
+
+    # Save learnings if requested
+    if args.save_learnings and args.mode == "learn":
+        video_id = extract_video_id(url)
+        knowledge_dir = _resolve_knowledge_dir(args)
+        result = save_learnings(summary, title, url, video_id, knowledge_dir)
+        if result:
+            json_path, md_path = result
+            print(f"\nLearnings saved:")
+            print(f"  JSON: {json_path}")
+            print(f"  Markdown: {md_path}")
+
+
+def _run_single_video(args) -> None:
+    """Process a single video URL."""
+    languages = [lang.strip() for lang in args.lang.split(",")]
+
+    print("Fetching video title...")
+    title = get_video_title(args.url)
+    print(f"Title: {title}\n")
+
+    transcript = _transcribe_video(args.url, args.engine, languages)
+
+    if args.transcript_only:
+        print(transcript)
+        return
+
+    interests = load_interests(args.interests)
+    skills_list = scan_skills(None) if args.mode == "learn" else None
+    _summarize_and_output(transcript, title, args.url, args, interests, skills_list)
+
+
+def _run_playlist(args) -> None:
+    """Process all videos in a YouTube playlist."""
+    print("Extracting playlist videos...")
+    videos = extract_playlist_videos(args.url)
+    total = len(videos)
+    print(f"Found {total} videos in playlist.\n")
+
+    languages = [lang.strip() for lang in args.lang.split(",")]
+    interests = load_interests(args.interests) if not args.transcript_only else None
+    skills_list = scan_skills(None) if args.mode == "learn" and not args.transcript_only else None
+
+    succeeded = 0
+    failed = 0
+
+    for i, video in enumerate(videos, 1):
+        print(f"\n{'#' * 60}")
+        print(f"  [{i}/{total}] {video['title']}")
+        print(f"  {video['url']}")
+        print(f"{'#' * 60}\n")
+
+        try:
+            transcript = _transcribe_video(video["url"], args.engine, languages)
+
+            if args.transcript_only:
+                print(transcript)
+            else:
+                _summarize_and_output(
+                    transcript, video["title"], video["url"], args, interests, skills_list
+                )
+            succeeded += 1
+        except Exception as e:
+            print(f"\nError processing video {video['id']}: {e}", file=sys.stderr)
+            failed += 1
+            continue
+
+    print(f"\n{'=' * 60}")
+    print(f"  Playlist complete: {succeeded} succeeded, {failed} failed out of {total}")
+    print(f"{'=' * 60}")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Transcribe and summarize YouTube videos with Claude"
     )
-    parser.add_argument("url", help="YouTube video URL or video ID")
+    parser.add_argument("url", help="YouTube video URL, video ID, or playlist URL")
     parser.add_argument(
         "--lang",
         default="de,en",
@@ -562,8 +727,8 @@ def main():
     parser.add_argument(
         "--mode",
         choices=["kurz", "standard", "learn"],
-        default="kurz",
-        help="Summary mode: kurz (default), standard (detailed), learn (extract learnings)",
+        default="standard",
+        help="Summary mode: kurz (brief), standard (default, detailed), learn (extract learnings)",
     )
     parser.add_argument(
         "--transcript-only",
@@ -616,71 +781,11 @@ def main():
                 "ANTHROPIC_API_KEY not set. Export it or add to .env: export ANTHROPIC_API_KEY=sk-ant-..."
             )
 
-        languages = [lang.strip() for lang in args.lang.split(",")]
-
-        print("Fetching video title...")
-        title = get_video_title(args.url)
-        print(f"Title: {title}\n")
-
-        # Transcription logic
-        transcript = None
-
-        if args.engine != "auto":
-            engine_name = ENGINES.get(args.engine, args.engine)
-            print(f"Transcribing with {engine_name}...")
-            transcript = transcribe_with_engine(args.url, args.engine)
-            print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
+        # Detect playlist vs single video
+        if is_playlist_url(args.url):
+            _run_playlist(args)
         else:
-            print(f"Extracting subtitles ({', '.join(languages)})...")
-            transcript = fetch_transcript_subtitles(args.url, languages)
-            if transcript:
-                print(f"Transcript (subtitles): {len(transcript)} characters\n")
-            else:
-                available = get_available_engines()
-                engine = prompt_engine_choice(available)
-                transcript = transcribe_with_engine(args.url, engine)
-                engine_name = ENGINES.get(engine, engine)
-                print(f"Transcript ({engine_name}): {len(transcript)} characters\n")
-
-        if args.transcript_only:
-            print(transcript)
-            return
-
-        # Load interests profile
-        interests = load_interests(args.interests)
-
-        # Scan skills for learn mode
-        skills_list = None
-        if args.mode == "learn":
-            skills_list = scan_skills(None)
-
-        print(f"Summarizing with {args.model} (mode: {args.mode})...")
-        summary = summarize(
-            transcript, title, args.summary_lang, args.model,
-            mode=args.mode, interests=interests, skills_list=skills_list,
-        )
-        print(f"\n{'=' * 60}")
-        print(f"  {title}")
-        print(f"{'=' * 60}\n")
-        print(summary)
-
-        # Save learnings if requested
-        if args.save_learnings and args.mode == "learn":
-            video_id = extract_video_id(args.url)
-            knowledge_dir = args.knowledge_dir
-            if not knowledge_dir:
-                config_repo = os.environ.get("CLAUDE_CONFIG_REPO")
-                if config_repo:
-                    knowledge_dir = os.path.join(config_repo, "knowledge")
-                else:
-                    knowledge_dir = os.path.expanduser("~/.claude/knowledge")
-
-            result = save_learnings(summary, title, args.url, video_id, knowledge_dir)
-            if result:
-                json_path, md_path = result
-                print(f"\nLearnings saved:")
-                print(f"  JSON: {json_path}")
-                print(f"  Markdown: {md_path}")
+            _run_single_video(args)
 
     except EngineSelectionRequired as e:
         # Exit code 2 signals SKILL.md to use AskUserQuestion
