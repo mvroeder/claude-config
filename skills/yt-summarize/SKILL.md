@@ -1,14 +1,14 @@
 ---
 name: yt-summarize
-description: Transcribe and summarize YouTube videos using yt-dlp + Claude API with multiple transcription engines and summary modes (kurz/standard/learn). Use when user shares a YouTube URL or asks to summarize a video.
-argument-hint: '<youtube-url> [--mode kurz|standard|learn] [--engine whisper|whisper-api|gpt4o-transcribe]'
+description: Transcribe and summarize YouTube videos or playlists using yt-dlp + Claude API with multiple transcription engines and summary modes (kurz/standard/learn). Use when user shares a YouTube URL, playlist URL, or asks to summarize a video.
+argument-hint: '<youtube-url-or-playlist> [--mode kurz|standard|learn] [--engine whisper|whisper-api|gpt4o-transcribe]'
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit, AskUserQuestion, Grep, Glob
 ---
 
 # YouTube Video Transcribe & Summarize
 
-Transcribe a YouTube video and generate a personalized, structured summary using Claude.
+Transcribe YouTube videos (single or playlist) and generate personalized, structured summaries using Claude.
 
 ## Prerequisites
 
@@ -32,8 +32,8 @@ echo "OPENAI_API_KEY: ${OPENAI_API_KEY:+set}" # Never show the actual key
 ## Step 1: Parse Arguments
 
 Extract from `$ARGUMENTS`:
-- **URL** (required): YouTube URL or video ID — first positional argument
-- **--mode**: Summary mode — `kurz` (default), `standard`, `learn`
+- **URL** (required): YouTube video URL, video ID, or **playlist URL** — first positional argument
+- **--mode**: Summary mode — `kurz` (brief), `standard` (default), `learn`
 - **--lang**: Subtitle languages, comma-separated (default: `de,en`)
 - **--engine**: Transcription engine — `auto` (default), `whisper`, `whisper-api`, `gpt4o-transcribe`
 - **--whisper**: Shortcut for `--engine whisper`
@@ -48,8 +48,8 @@ If no URL is provided, ask the user for one.
 
 | Mode | Description | Output |
 |------|-------------|--------|
-| `kurz` | Quick overview (default) | Kernaussagen, Zusammenfassung (300 words), Details, Fazit |
-| `standard` | Comprehensive analysis | Up to 2000 words with context, quotes, critical analysis |
+| `kurz` | Quick overview | Kernaussagen, Zusammenfassung (300 words), Details, Fazit |
+| `standard` | Comprehensive analysis (default) | Up to 2000 words with context, quotes, critical analysis |
 | `learn` | Extract learnings | Key principles, actionable items, skill matching, JSON+MD |
 
 ### Engine Options
@@ -60,6 +60,18 @@ If no URL is provided, ask the user for one.
 | `whisper` | Local Whisper transcription | `openai-whisper` |
 | `whisper-api` | OpenAI Whisper API (~$0.006/min) | `openai`, `OPENAI_API_KEY` |
 | `gpt4o-transcribe` | GPT-4o Transcribe (~$0.006/min, best quality) | `openai`, `OPENAI_API_KEY` |
+
+### Playlist Support
+
+The script auto-detects playlist URLs (containing `list=` or `/playlist?`). When a playlist URL is provided:
+- All videos are extracted using `yt-dlp --flat-playlist`
+- Each video is processed sequentially (transcribe → summarize)
+- Errors on individual videos are logged but don't stop the playlist
+- A final summary shows succeeded/failed counts
+
+The script handles everything — just pass the playlist URL as the `url` argument. All flags (`--mode`, `--engine`, `--save-learnings`, etc.) apply to every video in the playlist.
+
+**For the interest feedback loop (Step 5)**: When processing a playlist, ask for interest feedback **once at the end** covering all videos, not after each individual video. Summarize the main topics across all videos and let the user rate overall.
 
 ## Step 2: Transcribe
 
