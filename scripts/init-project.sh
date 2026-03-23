@@ -27,11 +27,11 @@ error()   { echo -e "${RED}✗${NC} $*" >&2; }
 ask() {
   local prompt="$1" default="${2:-}" reply
   if [ -n "$default" ]; then
-    echo -en "${BOLD}${prompt}${NC} [${default}]: "
+    echo -en "${BOLD}${prompt}${NC} [${default}]: " >/dev/tty
   else
-    echo -en "${BOLD}${prompt}${NC}: "
+    echo -en "${BOLD}${prompt}${NC}: " >/dev/tty
   fi
-  read -r reply
+  read -r reply </dev/tty
   echo "${reply:-$default}"
 }
 
@@ -39,14 +39,14 @@ ask_choice() {
   local prompt="$1"
   shift
   local options=("$@")
-  echo -e "\n${BOLD}${prompt}${NC}"
+  echo -e "\n${BOLD}${prompt}${NC}" >/dev/tty
   for i in "${!options[@]}"; do
-    echo "  $((i+1))) ${options[$i]}"
+    echo "  $((i+1))) ${options[$i]}" >/dev/tty
   done
   local choice
   while true; do
-    echo -en "${BOLD}Auswahl${NC} [1]: "
-    read -r choice
+    echo -en "${BOLD}Auswahl${NC} [1]: " >/dev/tty
+    read -r choice </dev/tty
     choice="${choice:-1}"
     if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le "${#options[@]}" ]; then
       echo "${options[$((choice-1))]}"
@@ -60,9 +60,9 @@ confirm() {
   local prompt="$1" default="${2:-y}"
   local hint="Y/n"
   [ "$default" = "n" ] && hint="y/N"
-  echo -en "${BOLD}${prompt}${NC} [${hint}]: "
+  echo -en "${BOLD}${prompt}${NC} [${hint}]: " >/dev/tty
   local reply
-  read -r reply
+  read -r reply </dev/tty
   reply="${reply:-$default}"
   [[ "$reply" =~ ^[Yy] ]]
 }
