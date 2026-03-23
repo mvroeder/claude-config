@@ -57,12 +57,24 @@ Add the SessionStart hook from `settings.json` to your project's `.claude/settin
 2. Commit and push
 3. Next cloud session picks it up automatically
 
+## Project Templates
+
+When starting a new project, use one of the templates as basis for the project's `CLAUDE.md`:
+
+- **`templates/CLAUDE-coding.md`** — Tech stack, architecture, conventions, testing
+- **`templates/CLAUDE-writing.md`** — Target audience, tonality, document types, formatting
+
+Just tell Claude Code: "Leg ein neues Projekt an basierend auf dem Coding-Template" — it will copy and adapt the template.
+
 ## Repository Structure
 
 ```
 claude-config/
 ├── CLAUDE.md              # Global preferences (synced to ~/.claude/CLAUDE.md)
 ├── settings.json          # SessionStart hook definition
+├── templates/
+│   ├── CLAUDE-coding.md   # Project template: coding & architecture
+│   └── CLAUDE-writing.md  # Project template: PRDs, whitepapers, docs
 ├── scripts/
 │   └── sync-skills.sh     # Syncs skills + CLAUDE.md to ~/.claude/
 └── skills/
