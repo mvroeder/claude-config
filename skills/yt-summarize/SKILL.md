@@ -1,32 +1,25 @@
 ---
 name: yt-summarize
-description: Transcribe and summarize YouTube videos or playlists using yt-dlp + Claude API with multiple transcription engines and summary modes (kurz/standard/learn). Use when user shares a YouTube URL, playlist URL, or asks to summarize a video.
+description: Summarize YouTube videos or playlists using yt-transcribe + Claude API with multiple summary modes (kurz/standard/learn). Use when user shares a YouTube URL, playlist URL, or asks to summarize a video. Requires yt-transcribe skill for transcription.
 argument-hint: '<youtube-url-or-playlist> [--mode kurz|standard|learn] [--engine whisper|whisper-api|gpt4o-transcribe]'
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit, AskUserQuestion, Grep, Glob
 ---
 
-# YouTube Video Transcribe & Summarize
+# YouTube Video Summarize
 
-Transcribe YouTube videos (single or playlist) and generate personalized, structured summaries using Claude.
+Summarize YouTube videos (single or playlist) using Claude. Transcription is delegated to the **yt-transcribe** skill (called as subprocess).
 
 ## Prerequisites
 
 Check that required tools are available before starting:
 
 ```bash
+# yt-transcribe skill must be installed
+TRANSCRIBE_SCRIPT="${CLAUDE_PLUGIN_ROOT:-$HOME/.claude/skills/yt-summarize}/../yt-transcribe/scripts/yt-transcribe.py"
+test -f "$TRANSCRIBE_SCRIPT" && echo "yt-transcribe: OK" || echo "MISSING: yt-transcribe skill"
 which yt-dlp || echo "MISSING: yt-dlp — install with: uv pip install yt-dlp"
-```
-
-Optional (for local Whisper):
-```bash
-which whisper || echo "OPTIONAL: whisper — install with: uv pip install openai-whisper"
-```
-
-Optional (for OpenAI API engines):
-```bash
-python3 -c "import openai" 2>/dev/null || echo "OPTIONAL: openai — install with: uv pip install openai"
-echo "OPENAI_API_KEY: ${OPENAI_API_KEY:+set}" # Never show the actual key
+echo "ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:+set}"
 ```
 
 ## Step 1: Parse Arguments
@@ -35,9 +28,9 @@ Extract from `$ARGUMENTS`:
 - **URL** (required): YouTube video URL, video ID, or **playlist URL** — first positional argument
 - **--mode**: Summary mode — `kurz` (brief), `standard` (default), `learn`
 - **--lang**: Subtitle languages, comma-separated (default: `de,en`)
-- **--engine**: Transcription engine — `auto` (default), `whisper`, `whisper-api`, `gpt4o-transcribe`
+- **--engine**: Transcription engine (passed to yt-transcribe) — `auto` (default), `whisper`, `whisper-api`, `gpt4o-transcribe`
 - **--whisper**: Shortcut for `--engine whisper`
-- **--transcript-only**: Output transcript without summarization
+- **--transcript-only**: Output transcript without summarization (still uses yt-transcribe)
 - **--summary-lang**: Language for the summary (default: `Deutsch`)
 - **--model**: Claude model for summarization (default: `claude-sonnet-4-6`)
 - **--save-learnings**: Save learn mode output to knowledge base
