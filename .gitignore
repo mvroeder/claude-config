@@ -4,6 +4,7 @@
 # === Nur diese Dateien/Ordner syncen ===
 !.gitignore
 !CLAUDE.md
+!INTERESTS.md
 !README.md
 !skills/
 !skills/**
@@ -13,6 +14,8 @@
 !hooks/**
 !templates/
 !templates/**
+!knowledge/
+!knowledge/**
 !.claude/
 !.claude/**
 

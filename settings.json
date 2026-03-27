@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-settings.json",
+    "hooks": {
+        "SessionStart": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "bash -c 'H=\"$HOME/.claude/hooks/session-start.sh\"; [ -x \"$H\" ] && exec \"$H\"; R=\"$HOME/.claude/claude-config\"; if [ -d \"$R/.git\" ]; then timeout 10 git -C \"$R\" pull --ff-only -q 2>/dev/null || true; else timeout 30 git clone --depth 1 -q https://github.com/mvroeder/claude-config.git \"$R\" 2>/dev/null || exit 0; fi; [ -x \"$R/scripts/sync-skills.sh\" ] && exec \"$R/scripts/sync-skills.sh\" || true'"
+                    }
+                ]
+            }
+        ]
+    },
+    "permissions": {
+        "allow": ["Skill"]
+    }
+}

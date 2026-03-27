@@ -11,6 +11,8 @@ set -euo pipefail
 
 SKILLS_TARGET="${HOME}/.claude/skills"
 CLAUDE_MD_TARGET="${HOME}/.claude/CLAUDE.md"
+INTERESTS_MD_TARGET="${HOME}/.claude/INTERESTS.md"
+KNOWLEDGE_TARGET="${HOME}/.claude/knowledge"
 
 # ── Determine source ──
 if [ -n "${SKILLS_SOURCE_OVERRIDE:-}" ]; then
@@ -37,6 +39,42 @@ fi
 CLAUDE_MD_SOURCE="${REPO_ROOT}/CLAUDE.md"
 if [ -f "$CLAUDE_MD_SOURCE" ]; then
   cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
+fi
+
+# ── Sync INTERESTS.md (only if source is newer) ──
+INTERESTS_MD_SOURCE="${REPO_ROOT}/INTERESTS.md"
+if [ -f "$INTERESTS_MD_SOURCE" ]; then
+  if [ ! -f "$INTERESTS_MD_TARGET" ]; then
+    cp "$INTERESTS_MD_SOURCE" "$INTERESTS_MD_TARGET"
+  else
+    src_mtime="$(stat -c %Y "$INTERESTS_MD_SOURCE" 2>/dev/null || stat -f %m "$INTERESTS_MD_SOURCE")"
+    tgt_mtime="$(stat -c %Y "$INTERESTS_MD_TARGET" 2>/dev/null || stat -f %m "$INTERESTS_MD_TARGET")"
+    if [ "$src_mtime" -gt "$tgt_mtime" ]; then
+      cp "$INTERESTS_MD_SOURCE" "$INTERESTS_MD_TARGET"
+    fi
+  fi
+fi
+
+# ── Sync knowledge directory (smart: skip unchanged) ──
+KNOWLEDGE_SOURCE="${REPO_ROOT}/knowledge"
+if [ -d "$KNOWLEDGE_SOURCE" ]; then
+  mkdir -p "$KNOWLEDGE_TARGET"
+  for knowledge_dir in "$KNOWLEDGE_SOURCE"/*/; do
+    [ -d "$knowledge_dir" ] || continue
+    dir_name="$(basename "$knowledge_dir")"
+    target="$KNOWLEDGE_TARGET/$dir_name"
+
+    if [ -d "$target" ] && [ ! -L "$target" ]; then
+      src_mtime="$(stat -c %Y "$knowledge_dir" 2>/dev/null || stat -f %m "$knowledge_dir")"
+      tgt_mtime="$(stat -c %Y "$target" 2>/dev/null || stat -f %m "$target")"
+      if [ "$src_mtime" -le "$tgt_mtime" ]; then
+        continue
+      fi
+    fi
+
+    rm -rf "$target"
+    cp -R "$knowledge_dir" "$target"
+  done
 fi
 
 [ -d "$SKILLS_SOURCE" ] || exit 0
