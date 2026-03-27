@@ -26,7 +26,24 @@ if [ -z "${CLAUDE_CONFIG_REPO:-}" ] || [ ! -d "${CLAUDE_CONFIG_REPO}" ]; then
   CLAUDE_CONFIG_REPO="$CLOUD_CLONE_DIR"
 fi
 
-# ── 2. Delegate to sync-skills.sh ──
+# ── 2. Installation health check ──
+HOOK_SELF="$(realpath "${BASH_SOURCE[0]}" 2>/dev/null || echo "${BASH_SOURCE[0]}")"
+REPO_HOOK="${CLAUDE_CONFIG_REPO}/hooks/global-session-start.sh"
+if [ -f "$REPO_HOOK" ] && [ -f "$HOOK_SELF" ]; then
+  if ! cmp -s "$REPO_HOOK" "$HOOK_SELF"; then
+    echo "claude-config: hook outdated — run: \$CLAUDE_CONFIG_REPO/scripts/install.sh" >&2
+  fi
+fi
+
+# ── 3. Sync Reminders (macOS only, non-blocking) ──
+if [ "$(uname)" = "Darwin" ]; then
+  REMINDERS_SYNC="${HOME}/.claude/tools/sync-reminders.py"
+  if [ -x "$REMINDERS_SYNC" ]; then
+    python3 "$REMINDERS_SYNC" &>/dev/null &
+  fi
+fi
+
+# ── 4. Delegate to sync-skills.sh ──
 SYNC_SCRIPT="${CLAUDE_CONFIG_REPO}/scripts/sync-skills.sh"
 if [ -x "$SYNC_SCRIPT" ]; then
   exec "$SYNC_SCRIPT"

@@ -18,6 +18,20 @@ HOOK_SOURCE="${CLAUDE_CONFIG_REPO:-}/hooks/global-session-start.sh"
 SYNC_SCRIPT="${CLAUDE_CONFIG_REPO:-}/scripts/sync-skills.sh"
 
 # ── Pre-flight checks ──────────────────────────────────────────────────────────
+
+# Check if already installed
+if [ -x "$HOOK_INSTALL_PATH" ] && [ -f "$SETTINGS_FILE" ]; then
+  echo "claude-config is already installed."
+  echo "  Hook:     $HOOK_INSTALL_PATH"
+  echo "  Settings: $SETTINGS_FILE"
+  echo ""
+  echo "Re-running will refresh the hook and merge settings."
+  printf "Continue? [y/N] "
+  read -r reply
+  [ "$reply" = "y" ] || [ "$reply" = "Y" ] || exit 0
+  echo ""
+fi
+
 if [ -z "${CLAUDE_CONFIG_REPO:-}" ]; then
   echo "ERROR: CLAUDE_CONFIG_REPO is not set."
   echo ""
