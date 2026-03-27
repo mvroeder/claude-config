@@ -14,10 +14,8 @@ CLAUDE_MD_TARGET="${HOME}/.claude/CLAUDE.md"
 
 # ── Determine source ──
 if [ -n "${SKILLS_SOURCE_OVERRIDE:-}" ]; then
-  # Called from project-level hook — source is already local, no pull needed
   SKILLS_SOURCE="$SKILLS_SOURCE_OVERRIDE"
 elif [ -n "${CLAUDE_CONFIG_REPO:-}" ] && [ -d "${CLAUDE_CONFIG_REPO}" ]; then
-  # Called from user-level hook — pull latest changes first
   SKILLS_SOURCE="${CLAUDE_CONFIG_REPO}/skills"
 
   # Quick git pull (timeout 10s, fail silently if offline)
@@ -25,7 +23,6 @@ elif [ -n "${CLAUDE_CONFIG_REPO:-}" ] && [ -d "${CLAUDE_CONFIG_REPO}" ]; then
     timeout 10 git -C "$CLAUDE_CONFIG_REPO" pull --ff-only --quiet 2>/dev/null || true
   fi
 else
-  # No repo configured — nothing to do
   exit 0
 fi
 
@@ -36,39 +33,30 @@ else
   REPO_ROOT="${CLAUDE_CONFIG_REPO}"
 fi
 
-# ── Sync CLAUDE.md (only if source is newer) ──
+# ── Sync CLAUDE.md ──
 CLAUDE_MD_SOURCE="${REPO_ROOT}/CLAUDE.md"
 if [ -f "$CLAUDE_MD_SOURCE" ]; then
-  if [ ! -f "$CLAUDE_MD_TARGET" ]; then
-    cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
-  else
-    src_mtime="$(stat -c %Y "$CLAUDE_MD_SOURCE" 2>/dev/null || stat -f %m "$CLAUDE_MD_SOURCE")"
-    tgt_mtime="$(stat -c %Y "$CLAUDE_MD_TARGET" 2>/dev/null || stat -f %m "$CLAUDE_MD_TARGET")"
-    if [ "$src_mtime" -gt "$tgt_mtime" ]; then
-      cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
-    fi
-  fi
+  cp "$CLAUDE_MD_SOURCE" "$CLAUDE_MD_TARGET"
 fi
 
 [ -d "$SKILLS_SOURCE" ] || exit 0
 
 mkdir -p "$SKILLS_TARGET"
 
-# ── Copy skill directories (smart: skip unchanged) ──
+# ── Copy skill directories ──
 for skill_dir in "$SKILLS_SOURCE"/*/; do
   [ -d "$skill_dir" ] || continue
   skill_name="$(basename "$skill_dir")"
   target="$SKILLS_TARGET/$skill_name"
-
-  # Skip if target exists and source hasn't changed
-  if [ -d "$target" ] && [ ! -L "$target" ]; then
-    src_mtime="$(stat -c %Y "$skill_dir" 2>/dev/null || stat -f %m "$skill_dir")"
-    tgt_mtime="$(stat -c %Y "$target" 2>/dev/null || stat -f %m "$target")"
-    if [ "$src_mtime" -le "$tgt_mtime" ]; then
-      continue
-    fi
-  fi
-
   rm -rf "$target"
   cp -R "$skill_dir" "$target"
+done
+
+# ── Remove orphaned skill directories ──
+for installed_dir in "$SKILLS_TARGET"/*/; do
+  [ -d "$installed_dir" ] || continue
+  skill_name="$(basename "$installed_dir")"
+  if [ ! -d "$SKILLS_SOURCE/$skill_name" ]; then
+    rm -rf "$installed_dir"
+  fi
 done
