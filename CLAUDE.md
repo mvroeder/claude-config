@@ -17,3 +17,12 @@
 ## Umgebung
 - GitHub (Username: mvroeder)
 - Keine absoluten Pfade in Configs — Projekte laufen auf mehreren Maschinen
+
+## Datenquellen
+- **Apple Erinnerungen**: Bidirektionaler Sync mit `~/Cowork/productivity/TASKS.md`
+  - `~/reminders-export.json` — Rohdaten, alle 15 Min via launchd aktualisiert
+  - `~/Cowork/productivity/reminders-mapping.json` — Name→ID Mapping für Rückkanal
+  - Voller Sync (beide Richtungen): `python3 ~/.claude/tools/sync-reminders.py`
+  - Einzelne Reminder updaten: `~/.claude/tools/update-reminder <id> <action> [value]`
+    - Actions: `complete`, `uncomplete`, `due <YYYY-MM-DD>`, `due none`, `title <text>`, `note <text>`, `priority <0-9>`
+  - Wenn Tasks in TASKS.md als erledigt markiert werden (`[x]`), wird das bei nächstem Sync an Apple Reminders gepusht
