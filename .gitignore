@@ -27,3 +27,4 @@
 **/*.png
 **/*.mp3
 **/node_modules/
+.claude/settings.local.json
