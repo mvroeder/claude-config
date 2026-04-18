@@ -5,7 +5,6 @@
 - Code, Kommentare, Commits, Branch-Namen: Englisch
 
 ## Arbeitsweise
-- Bei Unklarheiten: nachfragen statt Annahmen treffen
 - Neue Dependencies: immer begründen warum
 
 ## Git
@@ -19,7 +18,7 @@
 - Keine absoluten Pfade in Configs — Projekte laufen auf mehreren Maschinen
 
 ## Datenquellen
-- **Apple Erinnerungen**: Bidirektionaler Sync mit `~/Cowork/productivity/TASKS.md`
+- **Apple Erinnerungen** (nur macOS): Bidirektionaler Sync mit `~/Cowork/productivity/TASKS.md`
   - `~/reminders-export.json` — Rohdaten, alle 15 Min via launchd aktualisiert
   - `~/Cowork/productivity/reminders-mapping.json` — Name→ID Mapping für Rückkanal
   - Voller Sync (beide Richtungen): `python3 ~/.claude/tools/sync-reminders.py`
@@ -29,21 +28,9 @@
 
 # Project rules
 
-## General
-- Be concise and precise.
-- Prefer minimal, reversible changes.
-- Explain major architectural decisions briefly before implementing.
-
 ## Security
 - Do not read, print, copy, summarise or modify `.env` files unless explicitly instructed.
-- Never expose secrets, API keys, tokens, passwords or credentials.
 - Use `.env.example` for configuration structure, not `.env`.
-
-## Code changes
-- Prefer small diffs.
-- Preserve the existing style unless there is a strong reason to improve it.
-- When changing multiple files, state the plan first.
 
 ## Validation
 - After code changes, suggest the exact command to test locally.
-- Flag assumptions explicitly.
